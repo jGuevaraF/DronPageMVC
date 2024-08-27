@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top" id="navIndex">
+        <div class="container-fluid bg-black">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <strong class="h2">Show de Drones</strong>
+            </a>
+            <button id="toggleButton" onclick="showOptions()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <!--<i class="fa-solid fa-bars fa-lg" style="color: #ffffff;"></i>-->
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#sobreNosotros"><strong>Sobre Nosotros</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#nuestroTrabajo"><strong>Nuestro Trabajo</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Reserva", "Reserva")"><strong>Reserva</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Preguntas", "Home")"><strong>Preguntas Frecuentes</strong></a>
+                    </li>
+
+                    @Html.Partial("_LoginPartial")
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>    
+
+@*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                 @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>*@
+<div class="body-content">
+    @RenderBody()
+    <hr />
+    @*<footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    <footer class="m-3">
+        <div class="container">
+            <hr class="border opacity-75">
+
+            <div class="row justify-content-center">
+                <!-- Primera Columna -->
+                <div class="col-lg-4">
+                    <div class="footer-location text-center text-white font-monospace">
+                        <!--<p class="h5">CDMX</p>-->
+                        <a href="@Url.Action("Index","Home")">
+                            <img src="~/Content/img/logo.png" />
+                        </a>
+                        <ul class="list-unstyled fs-6">
+                            <li>Reforma 199 | Piso 9 | Cuauhtémoc, 06500 Ciudad de México</li>
+                            <li><p href="#">55 5705 5765</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Segunda Columna -->
+                <div class="col-lg-4">
+                    <div class="footer-location text-center text-white font-monospace">
+                        <ul class="list-unstyled fs-6">
+                            <li><a href="@Url.Action("Index", "Home")" class="text-decoration-none text-white">Home</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#sobreNosotros" class="text-decoration-none text-white">Sobre Nosotros</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#nuestroTrabajo" class="text-decoration-none text-white">Nuestro Trabajo</a></li>
+                            <li><a href="@Url.Action("Reserva", "Reserva")" class="text-decoration-none text-white">Reserva</a></li>
+                            <li><a href="@Url.Action("Preguntas", "Home")" class="text-decoration-none text-white">Preguntas Frecuentes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tercera Columna -->
+                <div class="col-lg-4">
+                    <div class="footer-location text-center text-white font-monospace">
+                        <p class="fs-6 font-monospace">Teléfono:</p>
+                        <ul class="list-unstyled fs-6">
+                            <li><p>55 5705 5765</p></li>
+                            <li class="d-inline me-3"><a href="#" class="text-reset"><i class="bi bi-facebook fs-2"></i></a></li>
+                            <li class="d-inline"><a href="#" class="text-reset"><i class="bi bi-instagram fs-2"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!--<hr class="border opacity-75">-->
+            <div class="m-3 text-white">
+                <p class="text-center p-2">
+                    &copy; 2024 Drones. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
