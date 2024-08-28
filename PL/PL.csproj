@@ -198,6 +198,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\cssEstilos\Calendario.css" />
     <Content Include="Content\cssEstilos\Preguntas.css" />
     <Content Include="Content\cssEstilos\Reserva.css" />
     <Content Include="Content\img\Cards\Aguila.png" />
@@ -214,6 +215,7 @@
     <Content Include="Content\img\FondoEstrellas3.gif" />
     <Content Include="Content\img\FondoEstrellasNegro.gif" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Scripts\Reserva\Calendario.js" />
     <Content Include="Content\video\5.Calabaza.mp4" />
     <Content Include="Content\video\Aguila 3mb.mp4" />
     <Content Include="Content\video\Banner.mp4" />
@@ -285,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

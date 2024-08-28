@@ -14,12 +14,12 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult Reserva()
         {
-            ML.CatMotivoCorreo catMotivoCorreo = new ML.CatMotivoCorreo();
-            ML.Result result = BL.CatMotivoCorreo.GetAll();
-            if (result.Correct)
+            ML.CatServicio servicio = new ML.CatServicio();
+            ML.Result resultServicio = BL.CatServicio.GetAll();
+            if (resultServicio.Correct)
             {
-                catMotivoCorreo.CatMotivosCorreo = result.Objects;
-                return View(catMotivoCorreo);
+                servicio.CatServicios = resultServicio.Objects;
+                return View(servicio);
             }
             else
             {

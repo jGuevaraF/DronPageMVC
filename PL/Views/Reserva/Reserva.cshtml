@@ -1,4 +1,4 @@
-﻿@model ML.CatMotivoCorreo
+﻿@model ML.CatServicio
 
 @{
     ViewBag.Title = "Reserva";
@@ -6,6 +6,13 @@
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Reserva.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Calendario.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+
 
 <main class="pt-5">
     <div class="container mt-5">
@@ -23,82 +30,113 @@
         <div class="row mt-5">
             <!-- Información de la Empresa -->
             <div class="col-lg-6 col-md-12 mb-4 order-lg-1 order-2 mt-4 mt-md-0">
-                <div class="ratio ratio-4x3">
-                    <br />
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.583157696642!2d-99.16422772508706!3d19.430408440751457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff59e4d836d3%3A0xbcd6c98eb895755f!2sAv.%20P.%C2%BA%20de%20la%20Reforma%20199%2C%20Col.%20Renacimiento%2C%20Cuauht%C3%A9moc%2C%2006500%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1sen!2smx!4v1722033308898!5m2!1sen!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <h5 class="text-center mb-3">¡Hablemos! Completa el formulario para que podamos ayudarte.</h5>
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label"><i class="bi bi-person"></i> Nombre</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ciudad" class="form-label"><i class="bi bi-geo-alt"></i> Ciudad</label>
+                        <input type="text" class="form-control" id="ciudad">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label"><i class="bi bi-telephone"></i> Teléfono</label>
+                        <input type="text" class="form-control" id="telefono">
+                    </div>
+                    <div class="form-text text-white">
+                        Si tienes alguna duda, revisa nuestra sección de <a href="@Url.Action("Preguntas","Home")" class="text-info">preguntas frecuentes</a>, no dudes en escribirnos. Estamos aquí para ayudarte.
+                    </div>
+                </form>
             </div>
 
             <!-- Formulario de Reserva -->
             <div class="col-lg-6 col-md-12 order-lg-2 order-1 mb-4s text-white">
-                <form id="formReserva">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label"><strong>Nombre*</strong></label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
-                        </div>
+                <h1 class="text-center fw-bold mb-5">Servicio</h1>
+                @foreach (ML.CatServicio servicio in Model.CatServicios)
+                {
+                    <input type="hidden" value="@servicio.IdCatServicio" />
+                    <div class="service-option" id="evento-corporativo">
+                        <h3>@servicio.Titulo</h3>
+                        <p>@servicio.Contenido</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label"><strong>Email*</strong></label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="asunto" class="form-label"><strong>Asunto*</strong></label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa fa-tag"></i></span>
-                            <input type="text" class="form-control" id="asunto" placeholder="Asunto" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="asunto" class="form-label"><strong>Asunto*</strong></label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa fa-tag"></i></span>
-                            <input type="text" class="form-control" id="asunto" placeholder="Asunto" required>
-                            @*@Html.DropDownListFor(Model => Model.IdCatMotivoCorreo, new SelectList(Model.CatMotivosCorreo), )*@
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="mensaje" class="form-label"><strong>Mensaje*</strong></label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fa fa-comment"></i></span>
-                            <textarea class="form-control" id="mensaje" rows="4" placeholder="Mensaje" required></textarea>
-                        </div>
-                    </div>
+                }
 
-                    <div class="text-center">
-                        <input type="submit" class="custom-btn bg-transparent" value="Enviar">
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
 
-
-
-    <!--Modal-->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Resultado de la Reserva</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Mensaje de éxito o error se actualizará aquí -->
-                    <p id="modalMessage" style="color: black;"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <div class="row mt-5">
+            <div class="col-lg-6 order-lg-1">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <video autoplay muted loop>
+                                <source src="~/Content/video/Banner.mp4"
+                                        type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>100 Drones</h5>
+                                <p>Descripción del video</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <video autoplay muted loop>
+                                <source src="~/Content/video/Aguila 3mb.mp4" type="video/mp4">
+                            </video>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>200 Drones</h5>
+                                <p>Otra descripción</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <video autoplay muted loop>
+                                <source src="~/Content/video/Mexico 3mb.mp4" type="video/mp4">
+                            </video>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>300 Drones</h5>
+                                <p>Última descripción</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-6 order-lg-2">
+                <div id="calendar"></div>
+            </div>
         </div>
+
     </div>
 
 </main>
 
+
+
+
 <script type="text/javascript" src="~/Scripts/Reserva/Email.js"></script>
+<script type="text/javascript" src="~/Scripts/Reserva/Calendario.js"></script>
+
+<script>
+    // Obtener todos los elementos de opción de servicio
+    const serviceOptions = document.querySelectorAll('.service-option');
+
+    // Agregar evento de click a cada opción
+    serviceOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            // Remover la clase 'active' de todas las opciones
+            serviceOptions.forEach(opt => opt.classList.remove('active'));
+
+            // Agregar la clase 'active' a la opción seleccionada
+            this.classList.add('active');
+        });
+    });
+</script>
