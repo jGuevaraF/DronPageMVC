@@ -16,7 +16,11 @@ namespace PL.Controllers
 
         public ActionResult Preguntas()
         {
-            return View();
+            ML.Result result = BL.CatPregunta.GetAll();
+
+            ML.CatPregunta catPregunta = new ML.CatPregunta();
+            catPregunta.Preguntas = result.Objects;
+            return View(catPregunta);
         }
 
     }

@@ -29,6 +29,7 @@ namespace DL
     
         public virtual DbSet<CatMotivoCorreo> CatMotivoCorreos { get; set; }
         public virtual DbSet<CatServicio> CatServicios { get; set; }
+        public virtual DbSet<CatPregunta> CatPreguntas { get; set; }
     
         public virtual int CatMotivoCorreoAdd(string descripcion)
         {
@@ -78,6 +79,11 @@ namespace DL
         public virtual ObjectResult<CatServicioGetAll_Result> CatServicioGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CatServicioGetAll_Result>("CatServicioGetAll");
+        }
+    
+        public virtual ObjectResult<CatPreguntaGetAll_Result> CatPreguntaGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CatPreguntaGetAll_Result>("CatPreguntaGetAll");
         }
     }
 }

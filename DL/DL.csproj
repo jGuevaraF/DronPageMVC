@@ -59,6 +59,12 @@
     <Compile Include="CatMotivoCorreoGetById_Result.cs">
       <DependentUpon>DronPage.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatPregunta.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatPreguntaGetAll_Result.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
     <Compile Include="CatServicio.cs">
       <DependentUpon>DronPage.tt</DependentUpon>
     </Compile>
