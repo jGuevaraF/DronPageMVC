@@ -12,6 +12,14 @@
           <Property Name="IdMotivoCorreo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="CatPregunta">
+          <Key>
+            <PropertyRef Name="IdPregunta" />
+          </Key>
+          <Property Name="IdPregunta" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pregunta" Type="varchar" MaxLength="500" />
+          <Property Name="Respuesta" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="CatServicio">
           <Key>
             <PropertyRef Name="IdCatServicio" />
@@ -34,9 +42,11 @@
           <Parameter Name="IdMotivoCorreo" Type="int" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="CatPreguntaGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CatServicioGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DronPageModelStoreContainer">
           <EntitySet Name="CatMotivoCorreo" EntityType="Self.CatMotivoCorreo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatPregunta" EntityType="Self.CatPregunta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatServicio" EntityType="Self.CatServicio" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -68,6 +78,8 @@
           </FunctionImport>
           <EntitySet Name="CatServicios" EntityType="DronPageModel.CatServicio" />
           <FunctionImport Name="CatServicioGetAll" ReturnType="Collection(DronPageModel.CatServicioGetAll_Result)" />
+          <EntitySet Name="CatPreguntas" EntityType="DronPageModel.CatPregunta" />
+          <FunctionImport Name="CatPreguntaGetAll" ReturnType="Collection(DronPageModel.CatPreguntaGetAll_Result)" />
         </EntityContainer>
         <ComplexType Name="CatMotivoCorreoGetAll_Result">
           <Property Type="Int32" Name="IdMotivoCorreo" Nullable="false" />
@@ -89,6 +101,19 @@
           <Property Type="Int32" Name="IdCatServicio" Nullable="false" />
           <Property Type="String" Name="Titulo" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Contenido" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="CatPregunta">
+          <Key>
+            <PropertyRef Name="IdPregunta" />
+          </Key>
+          <Property Name="IdPregunta" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pregunta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Respuesta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="CatPreguntaGetAll_Result">
+          <Property Type="Byte" Name="IdPregunta" Nullable="false" />
+          <Property Type="String" Name="Pregunta" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Respuesta" Nullable="true" MaxLength="500" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -138,6 +163,24 @@
                 <ScalarProperty Name="IdCatServicio" ColumnName="IdCatServicio" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CatPreguntas">
+            <EntityTypeMapping TypeName="DronPageModel.CatPregunta">
+              <MappingFragment StoreEntitySet="CatPregunta">
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+                <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+                <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CatPreguntaGetAll" FunctionName="DronPageModel.Store.CatPreguntaGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DronPageModel.CatPreguntaGetAll_Result">
+                <ScalarProperty Name="IdPregunta" ColumnName="IdPregunta" />
+                <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -235,6 +235,16 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Bold.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Bold_Italic.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Heavy.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Heavy_Italic.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Light.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Light_Italic.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Medium.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Medium_Italic.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Thin.otf" />
+    <Content Include="Content\Fonts\fonnts.com-Kallisto_Thin_Italic.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Index\Index.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
