@@ -211,6 +211,7 @@
     <Content Include="Content\img\Cards\Rueda fortuna.png" />
     <Content Include="Content\img\Cards\Santa.png" />
     <Content Include="Content\img\Cards\Satelite.png" />
+    <Content Include="Content\img\Colibri_formulario.png" />
     <Content Include="Content\img\Fondo estrellado.jpg" />
     <Content Include="Content\img\FondoEstrellas2.gif" />
     <Content Include="Content\img\FondoEstrellas3.gif" />
@@ -222,6 +223,9 @@
     <Content Include="Content\video\Banner.mp4" />
     <Content Include="Content\video\Caballo 3mb.mp4" />
     <Content Include="Content\video\Calavera 3mb.mp4" />
+    <Content Include="Content\video\contacto\Mariposa 100.gif" />
+    <Content Include="Content\video\contacto\Mariposa 200.gif" />
+    <Content Include="Content\video\contacto\Mariposa 300 1.gif" />
     <Content Include="Content\video\Corazon 3mb.mp4" />
     <Content Include="Content\video\Flor 3mb.mp4" />
     <Content Include="Content\video\Mexico 3mb.mp4" />

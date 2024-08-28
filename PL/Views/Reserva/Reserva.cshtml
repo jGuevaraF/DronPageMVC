@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Reserva";
-    Layout = "~/Views/Shared/_Layout.cshtml";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Reserva.css" />
@@ -21,81 +21,86 @@
             <video autoplay loop>
                 <source src="~/Content/video/Banner.mp4" />
             </video>
-            <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-                <!--<h2>Contáctanos</h2>-->
-                <p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold banner">Contactanos</p>
+            <div class="position-absolute top-50 start-50 translate-middle text-white">
+                <p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Contactanos</p>
             </div>
         </div>
 
         <div class="row mt-5" id="section1">
             <!-- Información de la Empresa -->
             <div class="col-lg-6 col-md-12 mb-4 order-lg-1 order-2 mt-4 mt-md-0">
-                <h5 class="text-center mb-3">¡Hablemos! Completa el formulario para que podamos ayudarte.</h5>
-                <form>
+                <h5 class="text-center mb-3 subtitulo2">Completa el formulario para que podamos ayudarte.</h5>
+                <form class="pt-5 col-lg-10 offset-lg-1">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label"><i class="bi bi-person"></i> Nombre</label>
+                        <label for="nombre" class="form-label subtitulo2"><i class="bi bi-person"></i> Nombre</label>
                         <input type="text" class="form-control" id="nombre">
                     </div>
                     <div class="mb-3">
-                        <label for="ciudad" class="form-label"><i class="bi bi-geo-alt"></i> Ciudad</label>
+                        <label for="ciudad" class="form-label subtitulo2"><i class="bi bi-geo-alt"></i> Ciudad</label>
                         <input type="text" class="form-control" id="ciudad">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email</label>
+                        <label for="email" class="form-label subtitulo2"><i class="bi bi-envelope"></i> Email</label>
                         <input type="email" class="form-control" id="email">
                     </div>
                     <div class="mb-3">
-                        <label for="telefono" class="form-label"><i class="bi bi-telephone"></i> Teléfono</label>
+                        <label for="telefono" class="form-label subtitulo2"><i class="bi bi-telephone"></i> Teléfono</label>
                         <input type="text" class="form-control" id="telefono">
                     </div>
-                    <div class="form-text text-white">
+                    <div class="form-text text-white subtitulo2">
                         Si tienes alguna duda, revisa nuestra sección de <a href="@Url.Action("Preguntas","Home")" class="text-info">preguntas frecuentes</a>, no dudes en escribirnos. Estamos aquí para ayudarte.
                     </div>
                 </form>
 
-                <button id="nextToSection2" class="btn btn-primary mt-3">Siguiente</button>
             </div>
 
             <!-- Formulario de Reserva -->
             <div class="col-lg-6 col-md-12 order-lg-2 order-1 mb-4s text-white">
-                <h1 class="text-center fw-bold mb-5">Servicio</h1>
-                @foreach (ML.CatServicio servicio in Model.CatServicios)
-                {
-                    <input type="hidden" value="@servicio.IdCatServicio" />
-                    <div class="service-option" id="evento-corporativo">
-                        <h3>@servicio.Titulo</h3>
-                        <p>@servicio.Contenido</p>
-                    </div>
-                }
+                <h1 class="text-center fw-bold mb-5 Subtitulo">Servicio</h1>
+                <div class="col-lg-8 offset-lg-2">
+                    @foreach (ML.CatServicio servicio in Model.CatServicios)
+                    {
+                        <input type="hidden" value="@servicio.IdCatServicio" />
+                        <div class="service-option" id="evento-corporativo">
+                            <h3 class="Subtitulo" style="font-size:20px">@servicio.Titulo</h3>
+                            <p class="Subtitulo" style="font-size:12px">@servicio.Contenido</p>
+                        </div>
+                    }
+                </div>
+
+
+                <button id="nextToSection2" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom">Siguiente</button>
 
             </div>
         </div>
 
-        <div class="row mt-5" id="section2"  style="display: none;">
+        <div class="row mt-5" id="section2" style="display: none;">
             <div class="col-lg-6 order-lg-1">
                 <div id="dronesCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <h2 class="text-center">Cantidad de drones</h2>
+                        <h2 class="text-center Subtitulo">Cantidad de drones</h2>
 
-                        <div class="carousel-item active text-center">
+                        <div class="carousel-item active text-center pt-5">
                             <div class="drone-count">
-                                <video class="mb-3" style="width:60%; margin: 0 auto; border-radius: 15px;" autoplay muted loop>
-                                    <source src="~/Content/video/5.Calabaza.mp4" type="video/mp4">
-                                    Tu navegador no soporta video HTML5.
-                                </video>
-                                <h3>200</h3>
-                                <p>Lorem Lorem ipsum dolor sit</p>
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 100.gif" />
+                                <h3 class="subtitulo2">100 drones</h3>
+                                @*<p>Lorem Lorem ipsum dolor sit</p>*@
                             </div>
                         </div>
 
-                        <div class="carousel-item text-center">
+                        <div class="carousel-item text-center pt-5">
                             <div class="drone-count">
-                                <video class="mb-3" style="width: 150px; height: 150px; margin: 0 auto; border-radius: 15px;" autoplay muted loop>
-                                    <source src="~/Content/video/5.Calabaza.mp4" type="video/mp4">
-                                    Tu navegador no soporta video HTML5.
-                                </video>
-                                <h3>200</h3>
-                                <p>Lorem Lorem ipsum dolor sit</p>
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 200.gif" />
+                                <h3 class="subtitulo2">200 drones</h3>
+                                @*<p>Lorem Lorem ipsum dolor sit</p>*@
+                            </div>
+                        </div>
+
+                        <div class="carousel-item text-center pt-5">
+                            <div class="drone-count">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 300 1.gif" />
+                                <h3 class="subtitulo2">200 drones</h3>
+                                @*<p>Lorem Lorem ipsum dolor sit</p>*@
                             </div>
                         </div>
                         <!-- Puedes agregar más elementos del carrusel aquí -->
