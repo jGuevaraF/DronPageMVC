@@ -200,6 +200,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\cssEstilos\Preguntas.css" />
     <Content Include="Content\cssEstilos\Reserva.css" />
+    <Content Include="Content\Fuentes.css" />
     <Content Include="Content\img\Cards\Aguila.png" />
     <Content Include="Content\img\Cards\Caballo.png" />
     <Content Include="Content\img\Cards\Calabaza.png" />
@@ -213,7 +214,9 @@
     <Content Include="Content\img\FondoEstrellas2.gif" />
     <Content Include="Content\img\FondoEstrellas3.gif" />
     <Content Include="Content\img\FondoEstrellasNegro.gif" />
+    <Content Include="Content\img\Icono Dron.png" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\Cards\Reyes magos.png" />
     <Content Include="Content\video\5.Calabaza.mp4" />
     <Content Include="Content\video\Aguila 3mb.mp4" />
     <Content Include="Content\video\Banner.mp4" />

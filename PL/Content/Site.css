@@ -37,3 +37,43 @@
 .btn-colores {
     background-image: linear-gradient(156deg, #00E0FD 0%, #A165F9 81%);
 }
+
+
+/*.accordion-button::after {
+    content: "";
+    background-image: url('img/Icono Dron.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;*/ /* Ajusta el tamaño según tu necesidad */
+    /*height: 24px;
+    margin-left: auto;*/ /* Mantiene la imagen en el extremo derecho */
+/*}*/
+
+/*.accordion-button::after {
+    content: none;
+}
+
+.accordion-button::after {
+    content: "";
+    background-image: url('img/Icono Dron.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;  Ajusta el tamaño según tu necesidad 
+    height: 24px;
+    margin-left: auto;  Mantiene la imagen en el extremo derecho 
+    transform: rotate(0deg);  Asegúrate de que no haya rotación inicial 
+}
+*/
+/*.accordion-button:not(.collapsed)::after {
+    transform: rotate(180deg);*/ /* Opcional: rota la imagen cuando el acordeón está abierto */
+/*}*/
+
+/*.accordion-button {
+    content: "";
+    background-image: url('img/Icono Dron.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;*/ /* Ajusta el tamaño según tu necesidad */
+    /*height: 24px;
+    margin-left: auto;*/ /* Mantiene la imagen en el extremo derecho */
+/*}*/

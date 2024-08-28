@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="~/Content/Fuentes.css">
+
 </head>
 <body>
 
@@ -31,19 +33,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Home")#sobreNosotros"><strong>Sobre Nosotros</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Home")#nuestroTrabajo"><strong>Nuestro Trabajo</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Reserva", "Reserva")"><strong>Reserva</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Preguntas", "Home")"><strong>Preguntas Frecuentes</strong></a>
+                        <a class="nav-link Subtitulo" href="@Url.Action("Index", "Home")#inicio"><strong>Inicio</strong></a>
                     </li>
 
-                    @Html.Partial("_LoginPartial")
+                    <li class="nav-item">
+                        <a class="nav-link Subtitulo" href="@Url.Action("Index", "Home")#sobreNosotros"><strong>Sobre Nosotros</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link Subtitulo" href="@Url.Action("Index", "Home")#nuestroTrabajo"><strong>Nuestro Trabajo</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link Subtitulo" href="@Url.Action("Reserva", "Reserva")"><strong>Reserva</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link Subtitulo" href="@Url.Action("Preguntas", "Home")"><strong>Preguntas Frecuentes</strong></a>
+                    </li>
+
+                    @*@Html.Partial("_LoginPartial")*@
 
                 </ul>
 
@@ -86,7 +92,7 @@
                         <a href="@Url.Action("Index","Home")">
                             <img src="~/Content/img/logo.png" />
                         </a>
-                        <ul class="list-unstyled fs-6">
+                        <ul class="list-unstyled fs-6 Subtitulo">
                             <li>Reforma 199 | Piso 9 | Cuauhtémoc, 06500 Ciudad de México</li>
                             <li><p href="#">55 5705 5765</p></li>
                         </ul>
@@ -96,20 +102,20 @@
                 <div class="col-lg-4">
                     <div class="footer-location text-center text-white font-monospace">
                         <ul class="list-unstyled fs-6">
-                            <li><a href="@Url.Action("Index", "Home")" class="text-decoration-none text-white">Home</a></li>
-                            <li><a href="@Url.Action("Index", "Home")#sobreNosotros" class="text-decoration-none text-white">Sobre Nosotros</a></li>
-                            <li><a href="@Url.Action("Index", "Home")#nuestroTrabajo" class="text-decoration-none text-white">Nuestro Trabajo</a></li>
-                            <li><a href="@Url.Action("Reserva", "Reserva")" class="text-decoration-none text-white">Reserva</a></li>
-                            <li><a href="@Url.Action("Preguntas", "Home")" class="text-decoration-none text-white">Preguntas Frecuentes</a></li>
+                            <li><a href="@Url.Action("Index", "Home")" class="text-decoration-none text-white Subtitulo">Home</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#sobreNosotros" class="text-decoration-none text-white Subtitulo">Sobre Nosotros</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#nuestroTrabajo" class="text-decoration-none text-white Subtitulo">Nuestro Trabajo</a></li>
+                            <li><a href="@Url.Action("Reserva", "Reserva")" class="text-decoration-none text-white Subtitulo">Reserva</a></li>
+                            <li><a href="@Url.Action("Preguntas", "Home")" class="text-decoration-none text-white Subtitulo">Preguntas Frecuentes</a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- Tercera Columna -->
                 <div class="col-lg-4">
                     <div class="footer-location text-center text-white font-monospace">
-                        <p class="fs-6 font-monospace">Teléfono:</p>
+                        @*<p class="fs-6 font-monospace">Teléfono:</p>*@
                         <ul class="list-unstyled fs-6">
-                            <li><p>55 5705 5765</p></li>
+                            @*<li><p>55 5705 5765</p></li>*@
                             <li class="d-inline me-3"><a href="#" class="text-reset"><i class="bi bi-facebook fs-2"></i></a></li>
                             <li class="d-inline"><a href="#" class="text-reset"><i class="bi bi-instagram fs-2"></i></a></li>
                         </ul>
@@ -118,7 +124,7 @@
                 </div>
             </div>
             <!--<hr class="border opacity-75">-->
-            <div class="m-3 text-white">
+            <div class="m-3 text-white Subtitulo">
                 <p class="text-center p-2">
                     &copy; 2024 Drones. Todos los derechos reservados.
                 </p>

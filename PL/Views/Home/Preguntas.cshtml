@@ -11,39 +11,47 @@
 
 
     <div class="container my-5">
-        <h1 class="text-center mb-4 text-white" style="font-size:70px;"><u>Preguntas Frecuentes</u></h1>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4  text-white Titulo pb-2">Preguntas Frecuentes</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h4 class="fs-4 text-center text-white Subtitulo pb-4">Es muy fácil cotizar tu evento. Aquí te dejamos las preguntas más frecuentes para saber un poco mas. </h4>
+            </div>
+        </div>
 
-        <p class="fs-4 text-center text-white">Es muy fácil cotizar tu evento. Aquí te dejamos las preguntas más frecuentes para saber un poco mas. </p>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
 
 
+                <div class="accordion" id="faqAccordion">
+                    @if (Model.Preguntas != null)
+                    {
+                        foreach (ML.CatPregunta pregunta in Model.Preguntas)
+                        {
+                            <div class="accordion-item bg-transparent text-white accordion-custom">
+                                <h2 class="accordion-header Subtitulo" id="heading@(pregunta.IdPregunta)">
+                                    <button class="accordion-button bg-transparent text-white Subtitulo border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(pregunta.IdPregunta)" aria-expanded="true" aria-controls="collapse@(pregunta.IdPregunta)">
+                                        @pregunta.Pregunta
+                                    </button>
+                                </h2>
+                                <div id="collapse@(pregunta.IdPregunta)" class="accordion-collapse collapse Subtitulo" aria-labelledby="heading@(pregunta.IdPregunta)" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p class="subtitulo2" style="font-size:15px;">
+                                            @pregunta.Respuesta
+                                        </p>
 
-        <div class="accordion" id="faqAccordion">
-            @if (Model.Preguntas != null)
-            {
-                foreach (ML.CatPregunta pregunta in Model.Preguntas)
-                {
-                    <div class="accordion-item bg-transparent text-white accordion-custom">
-                        <h2 class="accordion-header"  id="heading@(pregunta.IdPregunta)" >
-                            <button class="accordion-button bg-transparent  text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(pregunta.IdPregunta)" aria-expanded="true" aria-controls="collapse@(pregunta.IdPregunta)">
-                                @pregunta.Pregunta
-                            </button>
-                        </h2>
-                        <div id="collapse@(pregunta.IdPregunta)" class="accordion-collapse collapse" aria-labelledby="heading@(pregunta.IdPregunta)" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                @pregunta.Respuesta
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                }
+                        }
+                    }
+                </div>
+            </div>
 
-
-            }
-
-
-
-
-
-            <div class="text-center mt-5 p-4 rounded bg-transparent accordion-custom">
+            <div class="text-center mt-5 p-4 bg-transparent accordion-custom">
                 <p class="fs-4 text-white fw-bold mb-5">Si no encontró la respuesta a su pregunta, comunicate con nosotros por correo</p>
                 <a href="@Url.Action("Reserva", "Home")" class="custom-btn btn-7">
                     <span>Contactanos</span>

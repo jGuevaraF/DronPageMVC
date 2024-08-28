@@ -1,0 +1,37 @@
+﻿@font-face {
+    font-family: 'Dense';
+    src: url('../../Content/Fonts/fonnts.com-Kallisto_Bold.otf');
+}
+
+@font-face {
+    font-family: 'Dense-Italic';
+    src: url('../../Content/Fonts/fonnts.com-Kallisto_Light.otf');
+}
+
+
+@font-face {
+    font-family: 'Dense-Thin';
+    src: url('../../Content/Fonts/fonnts.com-Kallisto_Thin.otf');
+}
+
+
+.Titulo {
+    font-family: 'Dense';
+}
+
+.Subtitulo {
+    font-family: 'Dense-Italic';
+}
+
+.subtitulo2 {
+    font-family: 'Dense-Thin';
+}
+
+
+.borderButtom {
+    border-color: #29d0fd;
+    border-left-color: #29d0fd;
+    border-right-color: #29d0fd;
+}
+
+

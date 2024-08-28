@@ -7,13 +7,13 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<div id="introCarousel" class="carousel slide">
+<div id="inicio" class="carousel slide">
     <!-- Indicators -->
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#introCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#introCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#introCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#introCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
 
     <!-- Inner -->
@@ -26,14 +26,14 @@
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div>
-                    <h1 class="display-4 fw-bold text-light titleNuevo">Nombre Empresa</h1>
-                    <p class="lead text-light subtitleNuevo">Con drones de nueva generación y amplia experiencia creamos a tu lado los mejores shows de drones en ...</p>
+                    <h1 class="display-4 fw-bold text-light Titulo">Inmortaliza tus recuerdos</h1>
+                    <p class="lead text-light Subtitulo">Con drones de nueva generación y amplia experiencia creamos a tu lado los mejores shows de drones en ...</p>
                     <div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
-                            <h5 class="mb-0">Contáctanos!!!</h5>
+                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Home")">
+                            <h5 class="mb-0 Subtitulo">Contáctanos!!!</h5>
                         </a>
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="#nuestroTrabajo">
-                            <h5 class="mb-0">Nuestro Trabajo</h5>
+                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="#nuestroTrabajo">
+                            <h5 class="mb-0 Subtitulo">Nuestro Trabajo</h5>
                         </a>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div>
-                    <h1 class="display-4 fw-bold text-light">El mejor show de drones</h1>
+                    <h1 class="display-4 fw-bold text-light Titulo">El mejor show de drones</h1>
                     <div class="d-flex justify-content-center gap-3">
                         <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
                             <h5 class="mb-0">Contáctanos!!!</h5>
@@ -69,7 +69,7 @@
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div>
-                    <h1 class="display-4 fw-bold text-light">El mejor show de drones</h1>
+                    <h1 class="display-4 fw-bold text-light Titulo">El mejor show de drones</h1>
                     <div class="d-flex justify-content-center gap-3">
                         <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
                             <h5 class="mb-0">Contáctanos!!!</h5>
@@ -90,7 +90,7 @@
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div>
-                    <h1 class="display-4 fw-bold text-light">El mejor show de drones</h1>
+                    <h1 class="display-4 fw-bold text-light Titulo">El mejor show de drones</h1>
                     <div class="d-flex justify-content-center align-items-center gap-3">
                         <a class="btn btn-outline-light rounded-pill px-4 py-2" href="Reserva.html">
                             <h5 class="mb-0">Contáctanos!!!</h5>
@@ -105,11 +105,11 @@
     </div>
 
     <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#introCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#inicio" data-bs-slide="prev">
         <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#introCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#inicio" data-bs-slide="next">
         <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -118,39 +118,59 @@
 
 <main class="pt-5 px-5">
     <div class="container-fluid text-white" id="sobreNosotros">
-        <div>
-            <h2 class="text-center mb-4">Sobre Nosotros</h2>
+        <div class="mt-5 text-center">
+            <h2 class="text-center mb-4 Titulo">Sobre Nosotros</h2>
             <dxiv class="mt-4">
                 <div class="row">
                     <div class="col-12 col-md-6 p-3">
-                        <h3 class="text-center">Nombre empresa</h3>
-                        <p>
-                            Ofrecemos un espectáculo aéreo con drones equipados con luces LED, combinando movimientos precisos y luces multicolores para crear imágenes impactantes. Nuestro equipo está compuesto por pilotos certificados y profesionales altamente capacitados en programación y diseño.
-                            Contamos con todos los permisos de vuelo y seguros necesarios, y diseñamos y ejecutamos espectáculos aéreos con un rango de 100 a más de 400 drones, cada uno con LED multicolor de 2200 lúmenes, destacándonos como los drones más brillantes del mercado.
+                        <h3 class="text-center Titulo">K'i'ik</h3>
+                        <p class="Subtitulo text-center">
+                            Somos un equipo apasionado de innovadores y creativos que se dedican a ofrecer espectáculos de drones únicos y fascinantes. Nuestra misión es llevar el entretenimiento aéreo a nuevas alturas, combinando tecnología avanzada con una visión artística sin límites. Nuestro enfoque nos permite ofrecer experiencias personalizadas que se adaptan a las necesidades específicas de cada evento. 
                         </p>
+                        <p class="Subtitulo text-center">
+                            Desde el momento en que comenzamos, nuestra meta ha sido clara: queremos redefinir la forma en que se experimentan los shows de luces. Creemos que cada espectáculo debe ser más que una simple presentación; debe ser una experiencia que cautive, inspire y sorprenda.
+                        </p>
+
                     </div>
                     <div class="col-12 col-md-6 p-3">
                         <img src="~/Content/img/Cards/Santa.png" class="img-fluid" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 p-3">
+                        <img src="~/Content/img/Cards/Reyes magos.png" class="img-fluid" />
+                    </div>
+                    <div class="col-12 col-md-6 p-3">
+                        <p class="Subtitulo text-center">
+                            Cada vuelo, cada coreografía y cada patrón luminoso es el resultado de nuestro compromiso con cada una de las personas con las que trabajamos. Utilizamos la última tecnología en drones y un diseño innovador para crear espectáculos que no solo iluminan el cielo, sino que también cuenten una historia.
+                        </p>
+                        <p class="Subtitulo text-center">
+                            Queremos que nuestros shows sean un reflejo de nuestra dedicación a transformar lo ordinario en extraordinario, nos especializamos en ofrecer experiencias personalizadas que se adaptan a las necesidades de cada evento, ya sea una celebración familiar, un evento corporativo o un festival a gran escala.
+
+                        </p>
+                        <p class="Subtitulo text-center">
+                            Nos enorgullecemos de ofrecer no solo un show, sino una experiencia que redefine lo que es posible en el entretenimiento aéreo.
+                        </p>
                     </div>
                 </div>
             </dxiv>
         </div>
 
         <div class="mt-5 text-center" id="nuestroTrabajo">
-            <h2 class="text-center mb-4">Nuestro trabajo</h2>
+            <h2 class="text-center mb-4 Titulo">Nuestro trabajo</h2>
             <div class="text-center mt-4">
                 <div class="container-fluid my-5">
                     <div class="row">
                         <div class="col-md-4 mb-4">
 
                             <div class="card bg-transparent text-white">
-                                <video controls loop muted>
+                                <video controls loop muted autoplay>
                                     <source src="~/Content/video/5.Calabaza.mp4" />
                                 </video>
 
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title Subtitulo">Card title</h5>
+                                    <p class="card-text Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
                             </div>
                         </div>
@@ -233,23 +253,4 @@
 
 <script type="text/javascript" src="~/Scripts/Index/Index.js"></script>
 
-<style>
-    @@font-face {
-        font-family: 'Dense';
-        src: url('../../Content/Fonts/fonnts.com-Kallisto_Bold.otf');
-    }
 
-    @@font-face {
-        font-family: 'Dense-Italic';
-        src: url('../../Content/Fonts/fonnts.com-Kallisto_Light.otf');
-    }
-
-
-    .titleNuevo {
-        font-family: 'Dense';
-    }
-
-    .subtitleNuevo {
-        font-family: 'Dense-Italic';
-    }
-</style>
