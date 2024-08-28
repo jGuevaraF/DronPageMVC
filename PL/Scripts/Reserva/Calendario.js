@@ -36,8 +36,11 @@
             //Create the header elements
             this.header = createElement('div', 'header');
             this.header.className = 'header';
+            //this.header.className = 'subtitulo2';
+            //this.header.style.fontsize = "10px";
 
-            this.title = createElement('h1');
+            this.title = createElement('h5');
+            this.title.className = 'subtitulo2';
 
             //var right = createElement('div', 'right');
             var right = createElement('div', 'right');
