@@ -211,6 +211,7 @@
     <Content Include="Content\img\Cards\Rueda fortuna.png" />
     <Content Include="Content\img\Cards\Santa.png" />
     <Content Include="Content\img\Cards\Satelite.png" />
+    <Content Include="Content\img\colibri_reserva.png" />
     <Content Include="Content\img\Fondo estrellado.jpg" />
     <Content Include="Content\img\FondoEstrellas2.gif" />
     <Content Include="Content\img\FondoEstrellas3.gif" />

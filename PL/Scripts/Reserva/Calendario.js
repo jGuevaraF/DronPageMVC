@@ -219,7 +219,8 @@
     Calendar.prototype.addIconToDay = function (dayElement, day) {
         // Crear el ícono y añadirlo al contenedor
         var iconContainer = dayElement.querySelector('.day-icon-container');
-        var icon = createElement('i', 'day-icon bi bi-calendar-check-fill'); // Cambia 'bi bi-star' por el ícono que desees
+        //var icon = createElement('i', 'day-icon bi bi-calendar-check-fill'); // Cambia 'bi bi-star' por el ícono que desees
+        var icon = createElement('i', 'day-icon colibri'); // Cambia 'bi bi-star' por el ícono que desees
         icon.style.color = 'red'; // Aplicar el color rojo al ícono
         iconContainer.appendChild(icon);
     };
