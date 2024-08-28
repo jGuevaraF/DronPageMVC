@@ -1,6 +1,6 @@
 ﻿/*.card-img-top {
     height: 200px;*/ /* Ajusta esta altura según sea necesario */
-    /*object-fit: cover;
+/*object-fit: cover;
 }
 
 .custom-btn {
@@ -47,7 +47,7 @@ body {
         box-shadow: none;
         border-color: #fff;
         background-color: transparent;
-        color:#fff;
+        color: #fff;
     }
 
 .form-label {
@@ -83,7 +83,7 @@ body {
 .service-option {
     border: 2px solid #17a2b8;
     border-radius: 15px;
-    padding: 15px;
+    /*padding: 15px;*/
     margin-bottom: 15px;
     text-align: center;
     cursor: pointer;
@@ -94,3 +94,23 @@ body {
         background-color: #17a2b8;
         color: #000;
     }
+
+
+
+
+
+/* Transición suave para la visibilidad */
+.section {
+    transition: opacity 3s ease, transform 3s ease; /* Aumenta la duración de la transición */
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    display: none; /* Asegura que el elemento esté oculto al final de la transición */
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

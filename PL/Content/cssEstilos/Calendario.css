@@ -43,7 +43,7 @@
     height: auto;
     width: 420px;
     /*background: rgba(66, 66, 66, 1);*/
-    /*text-align: center;*/
+    text-align: center;
     margin-right: 10px;
     position: relative;
     z-index: 100;

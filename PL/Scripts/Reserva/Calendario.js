@@ -49,12 +49,15 @@
             right.appendChild(icon);
 
             var left = createElement('div', 'left');
+            icon = document.createElement('i');
+            icon.classList.add('bi', 'bi-chevron-left', 'fs-1', 'text-primary');
             left.addEventListener('click', function () { self.prevMonth(); });
+            left.appendChild(icon);
 
             //Append the Elements
             this.header.appendChild(this.title);
             this.header.appendChild(right);
-            //this.header.appendChild(left);
+            this.header.appendChild(left);
             this.el.appendChild(this.header);
         }
 
@@ -191,33 +194,33 @@
     }
 
     Calendar.prototype.openDay = function (el) {
-        var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
-        var day = this.current.clone().date(dayNumber);
-
-        // Obtener los elementos del número y del ícono
+        var dayNumberElement = el.querySelector('.day-number');
         var iconContainer = el.querySelector('.day-icon-container');
 
         // Alternar entre mostrar y ocultar el ícono
         if (iconContainer.style.display === 'none' || iconContainer.style.display === '') {
-            // Mostrar el ícono
+            // Mostrar el ícono y ocultar visualmente el número del día
             iconContainer.style.display = 'block';
+            iconContainer.style.marginTop = '10px';
+            dayNumberElement.style.visibility = 'hidden'; // Ocultar el número del día visualmente, pero no ocupar el espacio
 
             // Añadir el ícono si aún no existe
             if (!iconContainer.querySelector('.day-icon')) {
-                this.addIconToDay(el, day);
+                this.addIconToDay(el, dayNumberElement.innerText);
             }
         } else {
-            // Ocultar el ícono
+            // Ocultar el ícono y hacer visible el número del día
             iconContainer.style.display = 'none';
+            dayNumberElement.style.visibility = 'visible'; // Mostrar el número del día visualmente
         }
     };
-
 
 
     Calendar.prototype.addIconToDay = function (dayElement, day) {
         // Crear el ícono y añadirlo al contenedor
         var iconContainer = dayElement.querySelector('.day-icon-container');
-        var icon = createElement('i', 'day-icon bi bi-star'); // Cambia 'bi bi-star' por el ícono que desees
+        var icon = createElement('i', 'day-icon bi bi-calendar-check-fill'); // Cambia 'bi bi-star' por el ícono que desees
+        icon.style.color = 'red'; // Aplicar el color rojo al ícono
         iconContainer.appendChild(icon);
     };
 
