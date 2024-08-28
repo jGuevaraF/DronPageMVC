@@ -40,3 +40,10 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.bglither {
+    background-color: gray;
+     border-radius:10px;
+    opacity: .5;
+    
+}
