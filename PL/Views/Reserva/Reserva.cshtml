@@ -1,12 +1,13 @@
 ﻿@model ML.CatServicio
 
+
 @{
     ViewBag.Title = "Reserva";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Reserva.css" />
-<link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Calendario.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Calendario2.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -22,13 +23,14 @@
                 <source src="~/Content/video/Banner.mp4" />
             </video>
             <div class="position-absolute top-50 start-50 translate-middle text-white">
-                <p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Contactanos</p>
+                @*<p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Contactanos</p>*@
+                <p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Reserva</p>
             </div>
         </div>
 
         <div class="row mt-5" id="section1">
             <!-- Información de la Empresa -->
-            <div class="col-lg-6 col-md-12 mb-4 order-lg-1 order-2 mt-4 mt-md-0">
+            <div class="col-lg-6 col-md-12 mb-4 order-lg-1 order-1 mt-4 mt-md-0">
                 <h5 class="text-center mb-3 subtitulo2">Completa el formulario para que podamos ayudarte.</h5>
                 <form class="pt-5 col-lg-10 offset-lg-1">
                     <div class="mb-3">
@@ -55,13 +57,13 @@
             </div>
 
             <!-- Formulario de Reserva -->
-            <div class="col-lg-6 col-md-12 order-lg-2 order-1 mb-4s text-white">
+            <div class="col-lg-6 col-md-12 order-lg-2 order-2 mb-4s text-white">
                 <h1 class="text-center fw-bold mb-5 Subtitulo">Servicio</h1>
                 <div class="col-lg-8 offset-lg-2">
                     @foreach (ML.CatServicio servicio in Model.CatServicios)
                     {
-                        <input type="hidden" value="@servicio.IdCatServicio" />
                         <div class="service-option" id="evento-corporativo">
+                            <input type="hidden" value="@servicio.IdCatServicio" id="IdServicio" />
                             <h3 class="Subtitulo" style="font-size:20px">@servicio.Titulo</h3>
                             <p class="Subtitulo" style="font-size:12px">@servicio.Contenido</p>
                         </div>
@@ -69,37 +71,54 @@
                 </div>
 
 
-                <button id="nextToSection2" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom">Siguiente</button>
-
+                <div class="d-flex justify-content-lg-end justify-content-center">
+                    <button id="nextToSection2" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom">Siguiente</button>
+                </div>
             </div>
         </div>
 
         <div class="row mt-5" id="section2" style="display: none;">
-            <div class="col-lg-6 order-lg-1">
-                <div id="dronesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="col-lg-5 order-lg-1 col-md-12">
+                <div id="dronesCarousel" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-inner">
                         <h2 class="text-center Subtitulo">Cantidad de drones</h2>
 
                         <div class="carousel-item active text-center pt-5">
-                            <div class="drone-count">
-                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 100.gif" />
+                            <div class="drone-count" id="cantidadDrones">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/100_1 2.gif" />
                                 <h3 class="subtitulo2">100 drones</h3>
                                 @*<p>Lorem Lorem ipsum dolor sit</p>*@
                             </div>
                         </div>
 
                         <div class="carousel-item text-center pt-5">
-                            <div class="drone-count">
-                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 200.gif" />
+                            <div class="drone-count" id="cantidadDrones">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/200_1 2.gif" />
                                 <h3 class="subtitulo2">200 drones</h3>
                                 @*<p>Lorem Lorem ipsum dolor sit</p>*@
                             </div>
                         </div>
 
                         <div class="carousel-item text-center pt-5">
-                            <div class="drone-count">
-                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/Mariposa 300 1.gif" />
-                                <h3 class="subtitulo2">200 drones</h3>
+                            <div class="drone-count" id="cantidadDrones">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/300_1 2.gif" />
+                                <h3 class="subtitulo2">300 drones</h3>
+                                @*<p>Lorem Lorem ipsum dolor sit</p>*@
+                            </div>
+                        </div>
+
+                        <div class="carousel-item text-center pt-5">
+                            <div class="drone-count" id="cantidadDrones">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/500_1 2.gif" />
+                                <h3 class="subtitulo2">500 drones</h3>
+                                @*<p>Lorem Lorem ipsum dolor sit</p>*@
+                            </div>
+                        </div>
+
+                        <div class="carousel-item text-center pt-5">
+                            <div class="drone-count" id="cantidadDrones">
+                                <img style="width:60%;margin:0 auto; " src="~/Content/video/contacto/1000 2.gif" />
+                                <h3 class="subtitulo2">1000 drones</h3>
                                 @*<p>Lorem Lorem ipsum dolor sit</p>*@
                             </div>
                         </div>
@@ -115,22 +134,106 @@
                     </a>
                 </div>
 
-                <button id="backToSection1" class="btn btn-secondary mt-3">Regresar</button>
-                <button id="sendEmail" class="btn btn-primary mt-3">Enviar Correo</button>
+
+
+                @*<button id="backToSection1" class="btn btn-secondary mt-3">Regresar</button>
+                    <button id="sendEmail" class="btn btn-primary mt-3" onclick="sendEmail()">Enviar Correo</button>*@
             </div>
 
-            <div class="col-lg-6 order-lg-2">
-                <div id="calendar"></div>
+            <div class="col-lg-6 order-lg-2 col-md-12">
+                <div class="calendar-container row">
+                    <div class="col-lg-8">
+                        <div id="calendar"></div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-center mt-2">
+                            <!-- Card Clima Mejorada -->
+                            <div class="card text-body bg-transparent">
+                                <div class="card-body text-white">
+
+                                    <!-- Título y temperatura principal -->
+                                    <div class="d-flex flex-column text-center mb-2">
+                                        <div id="daySelected">
+                                            <p id="dayNumber" class="subtitulo2"></p>
+                                            @*<p id="dayNumber" ></p>*@
+                                            <p id="monthNumber" class="subtitulo2"></p>
+                                            @*<p id="monthNumber"></p>*@
+                                        </div>
+                                        
+                                    </div>
+
+                                    <!-- Detalles de temperatura y otros -->
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <!-- Ícono del clima -->
+                                        <div class="text-center">
+                                            <img id="icon" width="100%">
+                                            <p class="mb-0 font-weight-bold" id="temp_c"></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Descripción del clima -->
+                                    <div class="mt-2 text-center">
+                                        <span id="estado_temp" class="small" 
+                                              >Pronóstico: Lluvia moderada</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="d-flex justify-content-lg-end justify-content-center">
+                    <button id="backToSection1" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom m-2">Regresar</button>
+                    <button id="sendEmail" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom m-2" onclick="sendEmail()">Enviar Correo</button>
+                </div>
             </div>
+
+
         </div>
 
+
+
     </div>
+
+
+
+
+    <!--Modal-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Resultado de la Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Mensaje de éxito o error se actualizará aquí -->
+                    <p id="modalMessage" style="color: black;"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </main>
 
 
 
+<script>
+     // Convertir el JSON desde ViewBag a un objeto JavaScript
+    var fechasReservadasData = @Html.Raw(ViewBag.FechasReservadasJson);
+    console.log(fechasReservadasData)
+</script>
 
-<script type="text/javascript" src="~/Scripts/Reserva/Email.js"></script>
-<script type="text/javascript" src="~/Scripts/Reserva/Calendario.js"></script>
+<script type="text/javascript" src="~/Scripts/Reserva/Calendario2.js"></script>
 <script type="text/javascript" src="~/Scripts/Reserva/Reserva.js"></script>
+<script type="text/javascript" src="~/Scripts/Reserva/Email.js"></script>
+

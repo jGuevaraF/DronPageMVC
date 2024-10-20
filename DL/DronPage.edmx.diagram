@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="DronPageModel.CatMotivoCorreo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DronPageModel.CatServicio" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="DronPageModel.CatPregunta" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DronPageModel.FechasReservada" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DronPageModel.FormularioContacto" Width="1.5" PointX="5.625" PointY="5" />
+        <AssociationConnector Association="DronPageModel.FK__Formulari__IdCat__74AE54BC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,5 @@
-﻿!function () {
+﻿var clickedDate;
+!function () {
 
     moment.locale('es');
 
@@ -10,6 +11,7 @@
         this.el = document.querySelector(selector);
         this.events = events;
         this.current = moment().date(1);
+        this.selectedDate = null; // Variable para guardar la fecha seleccionada
         this.draw();
         var current = document.querySelector('.today');
         //if(current) {
@@ -27,7 +29,7 @@
         //Draw Month
         this.drawMonth();
 
-        this.drawLegend();
+        //this.drawLegend();
     }
 
     Calendar.prototype.drawHeader = function () {
@@ -65,7 +67,7 @@
         }
 
         //this.title.innerHTML = 'Fecha Aproximada <br>'+this.current.format('MMMM YYYY');
-        this.title.innerHTML = 'Fecha aproximada<br>' + this.current.format('MMMM').toUpperCase() + '<br>' + this.current.format('YYYY');
+        this.title.innerHTML = /*'Fecha aproximada<br>' + */this.current.format('MMMM').toUpperCase() + '<br>' + this.current.format('YYYY');
 
     }
 
@@ -97,7 +99,7 @@
             this.backFill();
             this.currentMonth();
             this.fowardFill();
-            this.month.className = 'month new';
+            this.month.className = 'month new subtitulo2';
         }
     }
 
@@ -147,8 +149,9 @@
 
         // Outer Day
         var outer = createElement('div', this.getDayClass(day));
+        outer.dataset.date = day.format('YYYY-MM-DD');
         outer.addEventListener('click', function () {
-            self.openDay(this);
+            self.openDay(this, day);
         });
 
         // Day Name
@@ -159,6 +162,22 @@
 
         // Create a container for the icon
         var iconContainer = createElement('div', 'day-icon-container');
+        iconContainer.style.display = "block";
+        iconContainer.style.marginTop = "20px";
+        //var dayNumber = document.getElementsByClassName('.day-number');
+        //dayNumber.style.display = "none";
+        var fechasReservadas = fechasReservadasData.map(function (item) {
+            return item.Fecha;
+        });
+
+        // Check if the day is in fechasReservadas
+        if (fechasReservadas.includes(day.format('YYYY-MM-DD'))) {
+            number.style.display = 'none';
+            var reservedIcon = createElement('i', 'bi bi-calendar-x-fill'); // Clase de ícono para fechas reservadas
+            reservedIcon.style.fontSize = '20px'; // Ajusta el tamaño del ícono
+            iconContainer.appendChild(reservedIcon);
+        }
+
 
         // Append the number and icon container
         outer.appendChild(name);
@@ -196,7 +215,11 @@
         return classes.join(' ');
     }
 
-    Calendar.prototype.openDay = function (el) {
+    
+    Calendar.prototype.openDay = function (el, day) {
+
+        clickedDate = el.dataset.date;
+        console.log(clickedDate);
         var dayNumberElement = el.querySelector('.day-number');
         var iconContainer = el.querySelector('.day-icon-container');
 
@@ -209,8 +232,10 @@
 
             // Añadir el ícono si aún no existe
             if (!iconContainer.querySelector('.day-icon')) {
-                this.addIconToDay(el, dayNumberElement.innerText);
+                //this.addIconToDay(el, dayNumberElement.innerText);
+                this.addIconToDay(el, day);
             }
+
         } else {
             // Ocultar el ícono y hacer visible el número del día
             iconContainer.style.display = 'none';
@@ -218,18 +243,21 @@
         }
     };
 
-
     Calendar.prototype.addIconToDay = function (dayElement, day) {
         // Crear el ícono y añadirlo al contenedor
         var iconContainer = dayElement.querySelector('.day-icon-container');
         //var icon = createElement('i', 'day-icon bi bi-calendar-check-fill'); // Cambia 'bi bi-star' por el ícono que desees
-        var icon = createElement('i', 'day-icon colibri'); // Cambia 'bi bi-star' por el ícono que desees
-        icon.style.color = 'red'; // Aplicar el color rojo al ícono
+        var icon = createElement('img', 'day-icon colibri');
+        icon.src = '../../Content/img/colibri_reserva.png';
+        icon.style.width = '90px'; // Ajusta el tamaño para que coincida con el ícono
+        //icon.style.height = '1em';
+
+        //icon.style.color = 'red'; // Aplicar el color rojo al ícono
         iconContainer.appendChild(icon);
+        //this.selectedDate = day.format('YYYY-MM-DD');
+        //console.log('Fecha seleccionada:', this.selectedDate); // Mostrar en consola
+
     };
-
-
-
 
     Calendar.prototype.renderEvents = function (events, ele) {
         //Remove any events in the current details element
@@ -277,22 +305,22 @@
         }
     }
 
-    Calendar.prototype.drawLegend = function () {
-        var legend = createElement('div', 'legend');
-        var calendars = this.events.map(function (e) {
-            return e.calendar + '|' + e.color;
-        }).reduce(function (memo, e) {
-            if (memo.indexOf(e) === -1) {
-                memo.push(e);
-            }
-            return memo;
-        }, []).forEach(function (e) {
-            var parts = e.split('|');
-            var entry = createElement('span', 'entry ' + parts[1], parts[0]);
-            legend.appendChild(entry);
-        });
-        this.el.appendChild(legend);
-    }
+    //Calendar.prototype.drawLegend = function () {
+    //    var legend = createElement('div', 'legend');
+    //    var calendars = this.events.map(function (e) {
+    //        return e.calendar + '|' + e.color;
+    //    }).reduce(function (memo, e) {
+    //        if (memo.indexOf(e) === -1) {
+    //            memo.push(e);
+    //        }
+    //        return memo;
+    //    }, []).forEach(function (e) {
+    //        var parts = e.split('|');
+    //        var entry = createElement('span', 'entry ' + parts[1], parts[0]);
+    //        legend.appendChild(entry);
+    //    });
+    //    this.el.appendChild(legend);
+    //}
 
     Calendar.prototype.nextMonth = function () {
         this.current.add('months', 1);
@@ -322,27 +350,6 @@
 }();
 
 !function () {
-    //var data = [
-    //  { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange' },
-    //  { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
-    //  { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
-    //  { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
-
-    //  { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-    //  { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-    //  { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-    //  { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
-
-    //  { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-    //  { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-    //  { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-    //  { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
-
-    //  { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-    //  { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-    //  { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-    //  { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
-    //];
 
     var data = [];
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -172,6 +173,51 @@ namespace BL
                         result.Correct = false;
                         result.ErrorMessage = "No se obtuvo ningun registro";
                     }
+                }
+
+            } catch(Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+
+            return result;
+        }
+
+        public static ML.Result GetAllFechasReservadas()
+        {
+            ML.Result result = new ML.Result();
+            try
+            {
+                using(DL.DronPageEntities context = new DL.DronPageEntities())
+                {
+                    var query = (from fechas in context.FechasReservadas
+                                 select new
+                                 {
+                                     IdFechaReservada = fechas.IdFechaReservada,
+                                     Fecha = fechas.Fecha
+                                 }).ToList();
+
+                    if(query.Count > 0)
+                    {
+                        result.Objects = new List<object>();
+                        foreach(var item in query)
+                        {
+                            ML.FechaReservada fechaReservada = new ML.FechaReservada();
+                            fechaReservada.IdFechaReservada = item.IdFechaReservada;
+                            fechaReservada.Fecha = item.Fecha;
+
+                            result.Objects.Add(fechaReservada);
+                        }
+
+                        result.Correct = true;
+                    } else
+                    {
+                        result.Correct = false;
+                        result.ErrorMessage = "No hay fechas";
+                    }
+
                 }
 
             } catch(Exception ex)

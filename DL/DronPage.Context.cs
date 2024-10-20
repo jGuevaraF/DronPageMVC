@@ -30,6 +30,8 @@ namespace DL
         public virtual DbSet<CatMotivoCorreo> CatMotivoCorreos { get; set; }
         public virtual DbSet<CatServicio> CatServicios { get; set; }
         public virtual DbSet<CatPregunta> CatPreguntas { get; set; }
+        public virtual DbSet<FechasReservada> FechasReservadas { get; set; }
+        public virtual DbSet<FormularioContacto> FormularioContactoes { get; set; }
     
         public virtual int CatMotivoCorreoAdd(string descripcion)
         {
@@ -84,6 +86,39 @@ namespace DL
         public virtual ObjectResult<CatPreguntaGetAll_Result> CatPreguntaGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CatPreguntaGetAll_Result>("CatPreguntaGetAll");
+        }
+    
+        public virtual int FormularioContactoAdd(string nombreUsuario, string emailUsuario, string telefono, string cantidadDrones, string fecha, Nullable<int> idCatServicio, string ciudad)
+        {
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("NombreUsuario", nombreUsuario) :
+                new ObjectParameter("NombreUsuario", typeof(string));
+    
+            var emailUsuarioParameter = emailUsuario != null ?
+                new ObjectParameter("EmailUsuario", emailUsuario) :
+                new ObjectParameter("EmailUsuario", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var cantidadDronesParameter = cantidadDrones != null ?
+                new ObjectParameter("CantidadDrones", cantidadDrones) :
+                new ObjectParameter("CantidadDrones", typeof(string));
+    
+            var fechaParameter = fecha != null ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(string));
+    
+            var idCatServicioParameter = idCatServicio.HasValue ?
+                new ObjectParameter("IdCatServicio", idCatServicio) :
+                new ObjectParameter("IdCatServicio", typeof(int));
+    
+            var ciudadParameter = ciudad != null ?
+                new ObjectParameter("Ciudad", ciudad) :
+                new ObjectParameter("Ciudad", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormularioContactoAdd", nombreUsuarioParameter, emailUsuarioParameter, telefonoParameter, cantidadDronesParameter, fechaParameter, idCatServicioParameter, ciudadParameter);
         }
     }
 }

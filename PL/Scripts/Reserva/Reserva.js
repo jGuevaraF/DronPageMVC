@@ -1,6 +1,7 @@
 ﻿// Obtener todos los elementos de opción de servicio
 const serviceOptions = document.querySelectorAll('.service-option');
 
+var idServicio = 0;
 // Agregar evento de click a cada opción
 serviceOptions.forEach(option => {
     option.addEventListener('click', function () {
@@ -9,6 +10,8 @@ serviceOptions.forEach(option => {
 
         // Agregar la clase 'active' a la opción seleccionada
         this.classList.add('active');
+        idServicio = this.querySelector('#IdServicio').value;
+        console.log(idServicio);
     });
 });
 
@@ -22,8 +25,5 @@ $(document).ready(function () {
         $('#section2').removeClass('visible').addClass('hidden');
         $('#section1').removeClass('hidden').addClass('visible').show();
     });
-    $('#sendEmail').click(function () {
-        // Aquí puedes agregar la lógica para enviar un correo
-        alert('Enviar correo');
-    });
+   
 });

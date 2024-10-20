@@ -1,0 +1,23 @@
+﻿/*.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);  Fondo semitransparente 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  Distribuye el espacio entre el título y el texto 
+    box-sizing: border-box;  Incluye el padding en el cálculo del tamaño del contenedor 
+    pointer-events: none;  Asegura que los controles de video sigan funcionando 
+}
+
+     Estilos generales para h2 y p 
+    .overlay h2,
+    .overlay p {
+        margin: 0;
+        position: relative;
+        z-index: 1;  Asegura que el texto esté sobre el fondo semitransparente 
+    }
+*/

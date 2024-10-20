@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace PL.Controllers
 {
@@ -15,10 +16,17 @@ namespace PL.Controllers
         public ActionResult Reserva()
         {
             ML.CatServicio servicio = new ML.CatServicio();
+
             ML.Result resultServicio = BL.CatServicio.GetAll();
             if (resultServicio.Correct)
             {
                 servicio.CatServicios = resultServicio.Objects;
+                ML.Result resultFechaReservada = BL.CatMotivoCorreo.GetAllFechasReservadas();
+                // Serializa la lista de FechasReservadas a JSON
+                var fechasReservadasJson = JsonConvert.SerializeObject(resultFechaReservada.Objects);
+
+                // Pasar JSON a la vista usando ViewBag
+                ViewBag.FechasReservadasJson = fechasReservadasJson;
                 return View(servicio);
             }
             else
@@ -29,56 +37,69 @@ namespace PL.Controllers
         }
 
         [HttpPost]
-        public JsonResult SendEmail(ML.EnviarCorreo usuario)
+        public JsonResult SendEmail(ML.FormularioContacto formularioContacto)
         {
-            try
+            ML.Result result = BL.FormularioContacto.Add(formularioContacto);
+
+            if (result.Correct)
             {
-                //string pathCorreoTemplate = Server.MapPath("~/Content/CorreoTemplate/Correo.html");
-
-                string body = string.Empty;
-
-                //using (StreamReader reader = new StreamReader(pathCorreoTemplate))
-                //{
-                //    body = reader.ReadToEnd();
-                //}
-
-                //body = body.Replace("{nombreCandidato}", "<td></td>");
-                //body = body.Replace("{LINK}", "http://www.google.com");
-
-                int port = int.Parse(ConfigurationManager.AppSettings["Port"]);
-                bool useDefaultCredentials = bool.Parse(ConfigurationManager.AppSettings["DefaultCredentials"]);
-                string email = ConfigurationManager.AppSettings["Email"];
-                string password = ConfigurationManager.AppSettings["Password"];
-                bool ssl = bool.Parse(ConfigurationManager.AppSettings["EnableSSL"]);
-
-                body = usuario.Mensaje;
-
-
-                var smtpClient = new SmtpClient("smtp.gmail.com")
+                try
                 {
-                    Port = port,
-                    UseDefaultCredentials = useDefaultCredentials,
-                    Credentials = new NetworkCredential(email, password),
-                    EnableSsl = ssl
-                };
+                    //string pathCorreoTemplate = Server.MapPath("~/Content/CorreoTemplate/Correo.html");
 
-                var mensaje = new System.Net.Mail.MailMessage
+                    string body = string.Empty;
+
+                    //using (StreamReader reader = new StreamReader(pathCorreoTemplate))
+                    //{
+                    //    body = reader.ReadToEnd();
+                    //}
+
+                    //body = body.Replace("{nombreCandidato}", "<td></td>");
+                    //body = body.Replace("{LINK}", "http://www.google.com");
+
+                    int port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                    bool useDefaultCredentials = bool.Parse(ConfigurationManager.AppSettings["DefaultCredentials"]);
+                    string email = ConfigurationManager.AppSettings["Email"];
+                    string password = ConfigurationManager.AppSettings["Password"];
+                    bool ssl = bool.Parse(ConfigurationManager.AppSettings["EnableSSL"]);
+
+                    //body = usuario.Mensaje;
+                    body = formularioContacto.CantidadDrones;
+
+
+                    var smtpClient = new SmtpClient("smtp.gmail.com")
+                    {
+                        Port = port,
+                        UseDefaultCredentials = useDefaultCredentials,
+                        Credentials = new NetworkCredential(email, password),
+                        EnableSsl = ssl
+                    };
+
+                    var mensaje = new System.Net.Mail.MailMessage
+                    {
+                        From = new System.Net.Mail.MailAddress(email),//
+                                                                      //Subject = usuario.Asunto,
+                        Subject = "Contacto Show de Drones",
+                        Body = body,
+                        IsBodyHtml = true
+                    };
+
+                    //mensaje.To.Add(usuario.EmailUsuario);
+                    mensaje.To.Add(formularioContacto.EmailUsuario);
+                    smtpClient.Send(mensaje);
+                    return Json(new { success = true, mensaje = "Datos recibidos correctamente" }, JsonRequestBehavior.AllowGet);
+
+                }
+                catch (Exception ex)
                 {
-                    From = new System.Net.Mail.MailAddress(email),//
-                    Subject = usuario.Asunto,
-                    Body = body,
-                    IsBodyHtml = true
-                };
-
-                mensaje.To.Add(usuario.EmailUsuario);
-                smtpClient.Send(mensaje);
-                return Json(new { success = true, mensaje = "Datos recibidos correctamente" }, JsonRequestBehavior.AllowGet);
+                    return Json(new { success = false, mensaje = ex.Message }, JsonRequestBehavior.AllowGet);
+                }
+            } else
+            {
+                return Json(new { success = false, mensaje = result.ErrorMessage }, JsonRequestBehavior.AllowGet);
 
             }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, mensaje = ex.Message }, JsonRequestBehavior.AllowGet);
-            }
+
 
         }
     }

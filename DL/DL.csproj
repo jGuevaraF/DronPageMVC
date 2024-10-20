@@ -87,6 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DronPage.edmx</DependentUpon>
     </Compile>
+    <Compile Include="FechasReservada.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioContacto.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

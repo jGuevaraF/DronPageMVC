@@ -3,6 +3,7 @@
     background-image: url('img/FondoEstrellasNegro.gif');
     background-size: cover;
     background-position: center;
+    padding-top: 56px; /* Ajusta este valor según la altura de tu navbar */
 }
 
     body::before {

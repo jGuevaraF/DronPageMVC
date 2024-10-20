@@ -7,10 +7,10 @@
 <link rel="stylesheet" type="text/css" href="~/Content/cssEstilos/Preguntas.css" />
 
 
-<main class="pt-5" >
+<main class="pt-5">
 
 
-    <div class="container fondoColibri my-5">
+    <div class="container-fluid fondoColibri my-5">
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1 class="text-center mb-4  text-white Titulo pb-2">Preguntas Frecuentes</h1>
@@ -52,10 +52,11 @@
             </div>
 
             <div class="text-center mt-5 p-4 bg-transparent accordion-custom">
-                <p class="fs-4 text-white fw-bold mb-5">Si no encontró la respuesta a su pregunta, comunicate con nosotros por correo</p>
-                <a href="@Url.Action("Reserva", "Home")" class="custom-btn btn-7">
-                    <span>Contactanos</span>
-                </a>
+                @*<p class="fs-4 text-white fw-bold mb-5">Si no encontró la respuesta a su pregunta, comunicate con nosotros por correo</p>*@
+                @*<a href="@Url.Action("Reserva", "Home")" class="custom-btn btn-7">
+                        <span>Contactanos</span>
+                    </a>*@
+                <a class="btn btn-lg btn-outline-light rounded-pill px-4 py-2 borderButtom m-2" href="@Url.Action("Reserva", "Reserva")">Contáctanos</a>
             </div>
 
 

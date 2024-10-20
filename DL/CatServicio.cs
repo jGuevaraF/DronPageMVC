@@ -14,8 +14,17 @@ namespace DL
     
     public partial class CatServicio
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CatServicio()
+        {
+            this.FormularioContactoes = new HashSet<FormularioContacto>();
+        }
+    
         public int IdCatServicio { get; set; }
         public string Titulo { get; set; }
         public string Contenido { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FormularioContacto> FormularioContactoes { get; set; }
     }
 }

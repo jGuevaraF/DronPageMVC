@@ -11,6 +11,7 @@ namespace ML
         public int IdCatServicio { get; set; }
         public string Titulo { get; set; }
         public string Contenido { get; set; }
+        public ML.FechaReservada FechaReservada { get; set; }
         public List<object> CatServicios { get; set; }
     }
 }

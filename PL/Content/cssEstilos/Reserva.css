@@ -50,6 +50,8 @@ body {
         color: #fff;
     }
 
+
+
 .form-label {
     font-weight: bold;
 }
@@ -80,34 +82,44 @@ body {
 }
 
 
-.service-option {
+/*.service-option {
     border: 2px solid #17a2b8;
-    border-radius: 15px;
+    border-radius: 15px;*/
     /*padding: 15px;*/
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;
     text-align: center;
     cursor: pointer;
-}
+}*/
 
-    .service-option:hover,
-    .service-option.active {
+/*.service-option:hover,*/
+/* .service-option.active {
         background-color: #17a2b8;
         color: #000;
     }
+*/
 
+.service-option {
+    border: 2px solid #17a2b8;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+    .service-option.active {
+        border-color: #17a2b8;
+        box-shadow: 0 0 20px #17a2b8, 0 0 20px #17a2b8, 0 0 20px #17a2b8;
+    }
 
-
-
-
-/* Transición suave para la visibilidad */
+/* Opciones de visibilidad para secciones */
 .section {
-    transition: opacity 3s ease, transform 3s ease; /* Aumenta la duración de la transición */
+    transition: opacity 3s ease, transform 3s ease;
 }
 
 .hidden {
     opacity: 0;
     transform: translateY(-20px);
-    display: none; /* Asegura que el elemento esté oculto al final de la transición */
+    display: none;
 }
 
 .visible {

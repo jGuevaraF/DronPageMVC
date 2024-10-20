@@ -20,9 +20,12 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top" id="navIndex">
+    @*<nav class="navbar navbar-expand-lg navbar-dark bg-black" id="navIndex">*@
         <div class="container-fluid bg-black">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <strong class="h2">Show de Drones</strong>
+                @*<strong class="h2">Show de Drones</strong>*@
+                <img src="~/Content/img/logo2.png" />
+
             </a>
             <button id="toggleButton" onclick="showOptions()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +33,7 @@
                     <!--<i class="fa-solid fa-bars fa-lg" style="color: #ffffff;"></i>-->
                 </span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 20px;">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link Subtitulo" href="@Url.Action("Index", "Home")#inicio"><strong>Inicio</strong></a>
@@ -76,7 +79,7 @@
     </nav>*@
 <div class="body-content">
     @RenderBody()
-    <hr />
+    @*<hr />*@
     @*<footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>*@
@@ -111,17 +114,17 @@
                     </div>
                 </div>
                 <!-- Tercera Columna -->
-                <div class="col-lg-4">
-                    <div class="footer-location text-center text-white font-monospace">
+                <!--<div class="col-lg-4">
+                    <div class="footer-location text-center text-white font-monospace">-->
                         @*<p class="fs-6 font-monospace">Teléfono:</p>*@
-                        <ul class="list-unstyled fs-6">
+                        <!--<ul class="list-unstyled fs-6">-->
                             @*<li><p>55 5705 5765</p></li>*@
-                            <li class="d-inline me-3"><a href="#" class="text-reset"><i class="bi bi-facebook fs-2"></i></a></li>
+                            <!--<li class="d-inline me-3"><a href="#" class="text-reset"><i class="bi bi-facebook fs-2"></i></a></li>
                             <li class="d-inline"><a href="#" class="text-reset"><i class="bi bi-instagram fs-2"></i></a></li>
                         </ul>
 
                     </div>
-                </div>
+                </div>-->
             </div>
             <!--<hr class="border opacity-75">-->
             <div class="m-3 text-white Subtitulo">

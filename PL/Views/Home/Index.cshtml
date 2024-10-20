@@ -2,6 +2,55 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    .video-container {
+        position: relative;
+        display: inline-block;
+    }
+
+        .video-container video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: white;
+        background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Esto distribuye el espacio entre el título y el texto */
+        /*padding: 10px;*/ /* Agrega algo de espacio alrededor del texto */
+        box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño del contenedor */
+        pointer-events: none; /* Esto asegura que los controles de video sigan funcionando */
+    }
+
+        .overlay h2 {
+            margin: 0;
+            position: relative;
+            z-index: 1; /* Asegura que el título esté sobre el fondo semitransparente */
+        }
+
+        .overlay p {
+            margin: 0;
+            position: relative;
+            z-index: 1; /* Asegura que el texto esté sobre el fondo semitransparente */
+            padding: 50px;
+        }
+
+    .content-banner {
+        margin-top: 550px;
+    }
+
+    .sobreNosotros{
+        font-size: 20px;
+    }
+</style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
@@ -25,16 +74,16 @@
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
-                <div>
+                <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">Inmortaliza tus recuerdos</h1>
                     <div class="">
                         <p class="lead text-light Subtitulo">
                             Creamos experiencias  inolvidables con precisión y estilo, transformando tu evento en una celebración deslumbrante
                         </p>
                     </div>
-                    
+
                     <div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Home")">
+                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Reserva")">
                             <h5 class="mb-0 Subtitulo">Contáctanos!!!</h5>
                         </a>
                         <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="#nuestroTrabajo">
@@ -48,23 +97,24 @@
         <!-- Single item -->
         <div class="carousel-item">
             <video class="w-100" autoplay loop muted>
-                <source src="~/Content/video/Aguila 3mb.mp4" type="video/mp4" />
+                <source src="~/Content/video/Santa 3mb.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
-                <div>
+                <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">Creatividad a nuevas alturas</h1>
                     <p class="lead text-light Subtitulo">
-                    Con innovadores sistemas de control y diseño, llevamos el espectáculo aéreo a un nivel superior, donde cada movimiento y patrón es una obra de arte en el cielo.</p>
+                        Con innovadores sistemas de control y diseño, llevamos el espectáculo aéreo a un nivel superior, donde cada movimiento y patrón es una obra de arte en el cielo.
+                    </p>
 
                     @*<div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
-                            <h5 class="mb-0">Contáctanos!!!</h5>
-                        </a>
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="#NuestroTrabajo">
-                            <h5 class="mb-0">Nuestro Trabajo</h5>
-                        </a>
-                    </div>*@
+                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
+                                <h5 class="mb-0">Contáctanos!!!</h5>
+                            </a>
+                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="#NuestroTrabajo">
+                                <h5 class="mb-0">Nuestro Trabajo</h5>
+                            </a>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -76,7 +126,7 @@
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
-                <div>
+                <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">Más allá de lo convencional</h1>
                     <p class="lead text-light Subtitulo">
                         Con tecnologías de vanguardia y un diseño único, transformamos el cielo.
@@ -86,13 +136,13 @@
                     </p>
 
                     @*<div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
-                            <h5 class="mb-0">Contáctanos!!!</h5>
-                        </a>
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="Reserva.html">
-                            <h5 class="mb-0">Nuestro Trabajo</h5>
-                        </a>
-                    </div>*@
+                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
+                                <h5 class="mb-0">Contáctanos!!!</h5>
+                            </a>
+                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="Reserva.html">
+                                <h5 class="mb-0">Nuestro Trabajo</h5>
+                            </a>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -104,7 +154,7 @@
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
-                <div>
+                <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">El cielo, nuestro escenario</h1>
                     <p class="lead text-light Subtitulo">
                         En cada espectáculo, el cielo se convierte en un lienzo de posibilidades infinitas.
@@ -115,7 +165,7 @@
 
 
                     <div class="d-flex justify-content-center gap-3">
-                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Home")">
+                        <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Reserva")">
                             <h5 class="mb-0 Subtitulo">Contáctanos!!!</h5>
                         </a>
                         <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="#nuestroTrabajo">
@@ -147,10 +197,10 @@
                 <div class="row">
                     <div class="col-12 col-md-6 p-3">
                         <h3 class="text-center Titulo">K'i'ik</h3>
-                        <p class="Subtitulo text-center">
+                        <p class="Subtitulo text-center sobreNosotros">
                             Somos un equipo apasionado de innovadores y creativos que se dedican a ofrecer espectáculos de drones únicos y fascinantes. Nuestra misión es llevar el entretenimiento aéreo a nuevas alturas, combinando tecnología avanzada con una visión artística sin límites. Nuestro enfoque nos permite ofrecer experiencias personalizadas que se adaptan a las necesidades específicas de cada evento.
                         </p>
-                        <p class="Subtitulo text-center">
+                        <p class="Subtitulo text-center sobreNosotros">
                             Desde el momento en que comenzamos, nuestra meta ha sido clara: queremos redefinir la forma en que se experimentan los shows de luces. Creemos que cada espectáculo debe ser más que una simple presentación; debe ser una experiencia que cautive, inspire y sorprenda.
                         </p>
 
@@ -164,14 +214,14 @@
                         <img src="~/Content/img/Cards/Reyes magos.png" class="img-fluid" />
                     </div>
                     <div class="col-12 col-md-6 p-3">
-                        <p class="Subtitulo text-center">
+                        <p class="Subtitulo text-center sobreNosotros">
                             Cada vuelo, cada coreografía y cada patrón luminoso es el resultado de nuestro compromiso con cada una de las personas con las que trabajamos. Utilizamos la última tecnología en drones y un diseño innovador para crear espectáculos que no solo iluminan el cielo, sino que también cuenten una historia.
                         </p>
-                        <p class="Subtitulo text-center">
+                        <p class="Subtitulo text-center sobreNosotros">
                             Queremos que nuestros shows sean un reflejo de nuestra dedicación a transformar lo ordinario en extraordinario, nos especializamos en ofrecer experiencias personalizadas que se adaptan a las necesidades de cada evento, ya sea una celebración familiar, un evento corporativo o un festival a gran escala.
 
                         </p>
-                        <p class="Subtitulo text-center">
+                        <p class="Subtitulo text-center sobreNosotros">
                             Nos enorgullecemos de ofrecer no solo un show, sino una experiencia que redefine lo que es posible en el entretenimiento aéreo.
                         </p>
                     </div>
@@ -181,95 +231,96 @@
 
         <div class="mt-5 text-center" id="nuestroTrabajo">
             <h2 class="text-center mb-4 Titulo">Nuestro trabajo</h2>
-            <div class="text-center mt-4">
-                <div class="container-fluid my-5">
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-
-                            <div class="card bg-transparent text-white">
-                                <video controls loop muted autoplay>
-                                    <source src="~/Content/video/5.Calabaza.mp4" />
-                                </video>
-
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title Subtitulo">Card title</h5>
-                                    <p class="card-text Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
+            <div class="container-fluid my-5">
+                <div class="row">
+                    <!-- Video 1 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/5.Calabaza.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-4">
-                            <a href="#">
-                                <div class="card bg-transparent">
-                                    <!--<img src="img/Cards/Calabaza.png" class="card-img-top" alt="drones">-->
-                                    <video controls loop muted>
-                                        <source src="~/Content/video/Corazon 3mb.mp4" />
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <a href="#">
-                                <div class="card bg-transparent">
-                                    <!--<img src="img/Cards/Calavera.png" class="card-img-top" alt="drones">-->
-                                    <video controls loop muted>
-                                        <source src="~/Content/video/Flor 3mb.mp4" />
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/Corazon 3mb.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <a href="#">
-                                <div class="card bg-transparent">
-                                    <!--<img src="img/Cards/Santa.png" class="card-img-top" alt="drones">-->
-                                    <video controls loop muted>
-                                        <source src="~/Content/video/Rueda fortuna 3mb.mp4" />
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <a href="#">
-                                <div class="card bg-transparent">
-                                    <!--<img src="img/Cards/Fantasma.png" class="card-img-top" alt="drones">-->
-                                    <video controls loop muted>
-                                        <source src="~/Content/video/Santa 3mb.mp4" />
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <a href="#">
-                                <div class="card bg-transparent">
-                                    <!--<img src="img/Cards/Satelite.png" class="card-img-top" alt="drones">-->
-                                    <video controls loop muted>
-                                        <source src="~/Content/video/Aguila 3mb.mp4" />
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
+                    <!-- Video 3 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/Flor 3mb.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Video 4 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/Rueda fortuna 3mb.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 5 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/Santa 3mb.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 6 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="video-container">
+                            <video controls loop>
+                                <source src="~/Content/video/Aguila 3mb.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="overlay">
+                                <h2 class="Subtitulo">Card Title</h2>
+                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 </main>
 
