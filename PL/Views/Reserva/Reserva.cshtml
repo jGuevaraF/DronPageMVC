@@ -32,15 +32,32 @@
             <!-- Información de la Empresa -->
             <div class="col-lg-6 col-md-12 mb-4 order-lg-1 order-1 mt-4 mt-md-0">
                 <h5 class="text-center mb-3 subtitulo2">Completa el formulario para que podamos ayudarte.</h5>
-                <form class="pt-5 col-lg-10 offset-lg-1">
+                <form class="pt-5 col-lg-10 offset-lg-1" id="formContacto">
                     <div class="mb-3">
                         <label for="nombre" class="form-label subtitulo2"><i class="bi bi-person"></i> Nombre</label>
                         <input type="text" class="form-control" id="nombre">
                     </div>
-                    <div class="mb-3">
-                        <label for="ciudad" class="form-label subtitulo2"><i class="bi bi-geo-alt"></i> Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad">
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <label for="IdPais" class="form-label subtitulo2"><i class="bi bi-globe2"></i> País</label>
+                            <select class="form-control custom-select subtitulo2" id="IdPais" onchange="GetCiudadByIdPais()" disabled>
+                            @*<select class="form-control custom-select subtitulo2" id="IdPais" disabled>*@
+                                <option class="form-control" value="0">Selecciona un país</option>
+                                @foreach (ML.Pais pais in Model.Ciudad.Pais.Paises)
+                                {
+                                    <option value="@pais.IdPais">@pais.Nombre</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="IdCiudad" class="form-label subtitulo2"><i class="bi bi-geo-alt"></i> Ciudad</label>
+                            <select class="form-control custom-select subtitulo2" disabled id="IdCiudad">
+                                <option class="form-control" value="0">Selecciona una ciudad</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="email" class="form-label subtitulo2"><i class="bi bi-envelope"></i> Email</label>
                         <input type="email" class="form-control" id="email">
@@ -160,7 +177,7 @@
                                             <p id="monthNumber" class="subtitulo2"></p>
                                             @*<p id="monthNumber"></p>*@
                                         </div>
-                                        
+
                                     </div>
 
                                     <!-- Detalles de temperatura y otros -->
@@ -174,8 +191,7 @@
 
                                     <!-- Descripción del clima -->
                                     <div class="mt-2 text-center">
-                                        <span id="estado_temp" class="small" 
-                                              >Pronóstico: Lluvia moderada</span>
+                                        <span id="estado_temp" class="small">Pronóstico: Lluvia moderada</span>
                                     </div>
 
                                 </div>
@@ -231,6 +247,9 @@
      // Convertir el JSON desde ViewBag a un objeto JavaScript
     var fechasReservadasData = @Html.Raw(ViewBag.FechasReservadasJson);
     console.log(fechasReservadasData)
+
+    let url = '@Url.Action("GetCiudadByIdPais", "Reserva")'
+    console.log(url)
 </script>
 
 <script type="text/javascript" src="~/Scripts/Reserva/Calendario2.js"></script>

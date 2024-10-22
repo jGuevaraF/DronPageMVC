@@ -44,9 +44,11 @@
     <Compile Include="CatMotivoCorreo.cs" />
     <Compile Include="CatPregunta.cs" />
     <Compile Include="CatServicio.cs" />
+    <Compile Include="Ciudad.cs" />
     <Compile Include="EnviarCorreo.cs" />
     <Compile Include="FechaReservada.cs" />
     <Compile Include="FormularioContacto.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reserva.cs" />
     <Compile Include="Result.cs" />

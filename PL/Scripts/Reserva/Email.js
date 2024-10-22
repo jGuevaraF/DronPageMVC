@@ -23,12 +23,15 @@ function sendEmail() {
     var mensaje = {
         NombreUsuario: $('#nombre').val(),
         EmailUsuario: $('#email').val(),
-        Ciudad: $('#ciudad').val(),
+        //Ciudad: $('#ciudad').val(),
         Telefono: $('#telefono').val(),
         CantidadDrones: cantidadDrones,
         Fecha: fecha,
         CatServicio: {
-            IdCatServicio: idServicioEmal
+            IdCatServicio: idServicioEmal,
+            Ciudad: {
+                IdCiudad: $('#IdCiudad').val()
+            }
         }
     }
     //event.preventDefault();
@@ -50,6 +53,8 @@ function sendEmail() {
             $('#exampleModal').on('hidden.bs.modal', function () {
                 location.reload();
             });
+
+            document.getElementById('formContacto').reset();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             $('#modalMessage').text('ERROR, mira la consola para más detalles.');

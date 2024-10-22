@@ -15,7 +15,7 @@ namespace BL
             {
                 using(DL.DronPageEntities context = new DL.DronPageEntities())
                 {
-                    int filasAfectadas = context.FormularioContactoAdd(contacto.NombreUsuario, contacto.EmailUsuario, contacto.Telefono, contacto.CantidadDrones, contacto.Fecha, contacto.CatServicio.IdCatServicio, contacto.Ciudad);
+                    int filasAfectadas = context.FormularioContactoAdd(contacto.NombreUsuario, contacto.EmailUsuario, contacto.Telefono, contacto.CantidadDrones, contacto.Fecha, contacto.CatServicio.IdCatServicio, contacto.CatServicio.Ciudad.IdCiudad);
 
                     if (filasAfectadas > 0)
                     {

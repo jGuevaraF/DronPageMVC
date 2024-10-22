@@ -71,6 +71,12 @@
     <Compile Include="CatServicioGetAll_Result.cs">
       <DependentUpon>DronPage.tt</DependentUpon>
     </Compile>
+    <Compile Include="Ciudad.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CiudadGetByIdPais_Result.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="DronPage.Context.cs">
       <AutoGen>True</AutoGen>
@@ -91,6 +97,12 @@
       <DependentUpon>DronPage.tt</DependentUpon>
     </Compile>
     <Compile Include="FormularioContacto.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pai.cs">
+      <DependentUpon>DronPage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaisGetAll_Result.cs">
       <DependentUpon>DronPage.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

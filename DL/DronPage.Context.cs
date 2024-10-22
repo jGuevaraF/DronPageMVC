@@ -31,6 +31,8 @@ namespace DL
         public virtual DbSet<CatServicio> CatServicios { get; set; }
         public virtual DbSet<CatPregunta> CatPreguntas { get; set; }
         public virtual DbSet<FechasReservada> FechasReservadas { get; set; }
+        public virtual DbSet<Ciudad> Ciudads { get; set; }
+        public virtual DbSet<Pai> Pais { get; set; }
         public virtual DbSet<FormularioContacto> FormularioContactoes { get; set; }
     
         public virtual int CatMotivoCorreoAdd(string descripcion)
@@ -88,7 +90,21 @@ namespace DL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CatPreguntaGetAll_Result>("CatPreguntaGetAll");
         }
     
-        public virtual int FormularioContactoAdd(string nombreUsuario, string emailUsuario, string telefono, string cantidadDrones, string fecha, Nullable<int> idCatServicio, string ciudad)
+        public virtual ObjectResult<CiudadGetByIdPais_Result> CiudadGetByIdPais(Nullable<byte> idPais)
+        {
+            var idPaisParameter = idPais.HasValue ?
+                new ObjectParameter("IdPais", idPais) :
+                new ObjectParameter("IdPais", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CiudadGetByIdPais_Result>("CiudadGetByIdPais", idPaisParameter);
+        }
+    
+        public virtual ObjectResult<PaisGetAll_Result> PaisGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaisGetAll_Result>("PaisGetAll");
+        }
+    
+        public virtual int FormularioContactoAdd(string nombreUsuario, string emailUsuario, string telefono, string cantidadDrones, string fecha, Nullable<int> idCatServicio, Nullable<int> idCiudad)
         {
             var nombreUsuarioParameter = nombreUsuario != null ?
                 new ObjectParameter("NombreUsuario", nombreUsuario) :
@@ -114,11 +130,11 @@ namespace DL
                 new ObjectParameter("IdCatServicio", idCatServicio) :
                 new ObjectParameter("IdCatServicio", typeof(int));
     
-            var ciudadParameter = ciudad != null ?
-                new ObjectParameter("Ciudad", ciudad) :
-                new ObjectParameter("Ciudad", typeof(string));
+            var idCiudadParameter = idCiudad.HasValue ?
+                new ObjectParameter("IdCiudad", idCiudad) :
+                new ObjectParameter("IdCiudad", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormularioContactoAdd", nombreUsuarioParameter, emailUsuarioParameter, telefonoParameter, cantidadDronesParameter, fechaParameter, idCatServicioParameter, ciudadParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormularioContactoAdd", nombreUsuarioParameter, emailUsuarioParameter, telefonoParameter, cantidadDronesParameter, fechaParameter, idCatServicioParameter, idCiudadParameter);
         }
     }
 }

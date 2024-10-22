@@ -54,7 +54,9 @@
     <Compile Include="CatMotivoCorreo.cs" />
     <Compile Include="CatServicio.cs" />
     <Compile Include="CatPregunta.cs" />
+    <Compile Include="Ciudad.cs" />
     <Compile Include="FormularioContacto.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

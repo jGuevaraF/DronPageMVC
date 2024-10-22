@@ -21,8 +21,9 @@ namespace DL
         public string CantidadDrones { get; set; }
         public string Fecha { get; set; }
         public Nullable<int> IdCatServicio { get; set; }
-        public string Ciudad { get; set; }
+        public Nullable<int> IdCiudad { get; set; }
     
         public virtual CatServicio CatServicio { get; set; }
+        public virtual Ciudad Ciudad { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using BL;
 
 namespace PL.Controllers
 {
@@ -16,6 +17,8 @@ namespace PL.Controllers
         public ActionResult Reserva()
         {
             ML.CatServicio servicio = new ML.CatServicio();
+            servicio.Ciudad = new ML.Ciudad();
+            servicio.Ciudad.Pais = new ML.Pais();
 
             ML.Result resultServicio = BL.CatServicio.GetAll();
             if (resultServicio.Correct)
@@ -27,6 +30,11 @@ namespace PL.Controllers
 
                 // Pasar JSON a la vista usando ViewBag
                 ViewBag.FechasReservadasJson = fechasReservadasJson;
+
+                //Pais
+                ML.Result resultPais = BL.Pais.GetAll();
+                servicio.Ciudad.Pais.Paises = resultPais.Objects;
+
                 return View(servicio);
             }
             else
@@ -101,6 +109,14 @@ namespace PL.Controllers
             }
 
 
+        }
+
+        [HttpGet]
+        public JsonResult GetCiudadByIdPais(int IdPais)
+        {
+            ML.Result result = BL.Ciudad.GetByIdPais(IdPais);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

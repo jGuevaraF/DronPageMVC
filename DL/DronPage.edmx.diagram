@@ -9,8 +9,12 @@
         <EntityTypeShape EntityType="DronPageModel.CatServicio" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="DronPageModel.CatPregunta" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="DronPageModel.FechasReservada" Width="1.5" PointX="3.375" PointY="3.75" />
-        <EntityTypeShape EntityType="DronPageModel.FormularioContacto" Width="1.5" PointX="5.625" PointY="5" />
+        <EntityTypeShape EntityType="DronPageModel.Ciudad" Width="1.5" PointX="12.125" PointY="3.625" />
+        <EntityTypeShape EntityType="DronPageModel.Pai" Width="1.5" PointX="9.875" PointY="3.75" />
+        <AssociationConnector Association="DronPageModel.FK__Ciudad__IdPais__04E4BC85" />
+        <EntityTypeShape EntityType="DronPageModel.FormularioContacto" Width="1.5" PointX="14.375" PointY="1.75" />
         <AssociationConnector Association="DronPageModel.FK__Formulari__IdCat__74AE54BC" />
+        <AssociationConnector Association="DronPageModel.FK__Formulari__IdCiu__07C12930" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

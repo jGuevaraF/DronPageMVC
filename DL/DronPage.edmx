@@ -28,6 +28,14 @@
           <Property Name="Titulo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Contenido" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdPais" Type="tinyint" />
+        </EntityType>
         <EntityType Name="FechasReservadas">
           <Key>
             <PropertyRef Name="IdFechaReservada" />
@@ -46,8 +54,27 @@
           <Property Name="CantidadDrones" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Fecha" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="IdCatServicio" Type="int" />
-          <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="IdCiudad" Type="int" />
         </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Ciudad__IdPais__04E4BC85">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Formulari__IdCat__74AE54BC">
           <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="0..1" />
           <End Role="FormularioContacto" Type="Self.FormularioContacto" Multiplicity="*" />
@@ -57,6 +84,18 @@
             </Principal>
             <Dependent Role="FormularioContacto">
               <PropertyRef Name="IdCatServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Formulari__IdCiu__07C12930">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="FormularioContacto" Type="Self.FormularioContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="FormularioContacto">
+              <PropertyRef Name="IdCiudad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -76,6 +115,9 @@
         </Function>
         <Function Name="CatPreguntaGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CatServicioGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CiudadGetByIdPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPais" Type="tinyint" Mode="In" />
+        </Function>
         <Function Name="FormularioContactoAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="EmailUsuario" Type="varchar" Mode="In" />
@@ -83,16 +125,27 @@
           <Parameter Name="CantidadDrones" Type="varchar" Mode="In" />
           <Parameter Name="Fecha" Type="varchar" Mode="In" />
           <Parameter Name="IdCatServicio" Type="int" Mode="In" />
-          <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="IdCiudad" Type="int" Mode="In" />
         </Function>
+        <Function Name="PaisGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DronPageModelStoreContainer">
           <EntitySet Name="CatMotivoCorreo" EntityType="Self.CatMotivoCorreo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatPregunta" EntityType="Self.CatPregunta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatServicio" EntityType="Self.CatServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FechasReservadas" EntityType="Self.FechasReservadas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormularioContacto" EntityType="Self.FormularioContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Ciudad__IdPais__04E4BC85" Association="Self.FK__Ciudad__IdPais__04E4BC85">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
           <AssociationSet Name="FK__Formulari__IdCat__74AE54BC" Association="Self.FK__Formulari__IdCat__74AE54BC">
             <End Role="CatServicio" EntitySet="CatServicio" />
+            <End Role="FormularioContacto" EntitySet="FormularioContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Formulari__IdCiu__07C12930" Association="Self.FK__Formulari__IdCiu__07C12930">
+            <End Role="Ciudad" EntitySet="Ciudad" />
             <End Role="FormularioContacto" EntitySet="FormularioContacto" />
           </AssociationSet>
         </EntityContainer>
@@ -128,10 +181,15 @@
           <EntitySet Name="CatPreguntas" EntityType="DronPageModel.CatPregunta" />
           <FunctionImport Name="CatPreguntaGetAll" ReturnType="Collection(DronPageModel.CatPreguntaGetAll_Result)" />
           <EntitySet Name="FechasReservadas" EntityType="DronPageModel.FechasReservada" />
-          <EntitySet Name="FormularioContactoes" EntityType="DronPageModel.FormularioContacto" />
-          <AssociationSet Name="FK__Formulari__IdCat__74AE54BC" Association="DronPageModel.FK__Formulari__IdCat__74AE54BC">
-            <End Role="CatServicio" EntitySet="CatServicios" />
-            <End Role="FormularioContacto" EntitySet="FormularioContactoes" />
+          <FunctionImport Name="CiudadGetByIdPais" ReturnType="Collection(DronPageModel.CiudadGetByIdPais_Result)">
+          <Parameter Name="IdPais" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="PaisGetAll" ReturnType="Collection(DronPageModel.PaisGetAll_Result)" />
+          <EntitySet Name="Ciudads" EntityType="DronPageModel.Ciudad" />
+          <EntitySet Name="Pais" EntityType="DronPageModel.Pai" />
+          <AssociationSet Name="FK__Ciudad__IdPais__04E4BC85" Association="DronPageModel.FK__Ciudad__IdPais__04E4BC85">
+            <End Role="Pai" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudads" />
           </AssociationSet>
           <FunctionImport Name="FormularioContactoAdd">
             <Parameter Name="NombreUsuario" Mode="In" Type="String" />
@@ -140,8 +198,17 @@
             <Parameter Name="CantidadDrones" Mode="In" Type="String" />
             <Parameter Name="Fecha" Mode="In" Type="String" />
             <Parameter Name="IdCatServicio" Mode="In" Type="Int32" />
-            <Parameter Name="Ciudad" Mode="In" Type="String" />
+            <Parameter Name="IdCiudad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="FormularioContactoes" EntityType="DronPageModel.FormularioContacto" />
+          <AssociationSet Name="FK__Formulari__IdCat__74AE54BC" Association="DronPageModel.FK__Formulari__IdCat__74AE54BC">
+            <End Role="CatServicio" EntitySet="CatServicios" />
+            <End Role="FormularioContacto" EntitySet="FormularioContactoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Formulari__IdCiu__07C12930" Association="DronPageModel.FK__Formulari__IdCiu__07C12930">
+            <End Role="Ciudad" EntitySet="Ciudads" />
+            <End Role="FormularioContacto" EntitySet="FormularioContactoes" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="CatMotivoCorreoGetAll_Result">
           <Property Type="Int32" Name="IdMotivoCorreo" Nullable="false" />
@@ -185,6 +252,44 @@
           <Property Name="IdFechaReservada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="CiudadGetByIdPais_Result">
+          <Property Type="Int32" Name="IdCiudad" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PaisGetAll_Result">
+          <Property Type="Byte" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdPais" Type="Byte" />
+          <NavigationProperty Name="Pai" Relationship="DronPageModel.FK__Ciudad__IdPais__04E4BC85" FromRole="Ciudad" ToRole="Pai" />
+          <NavigationProperty Name="FormularioContactoes" Relationship="DronPageModel.FK__Formulari__IdCiu__07C12930" FromRole="Ciudad" ToRole="FormularioContacto" />
+        </EntityType>
+        <EntityType Name="Pai">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudads" Relationship="DronPageModel.FK__Ciudad__IdPais__04E4BC85" FromRole="Pai" ToRole="Ciudad" />
+        </EntityType>
+        <Association Name="FK__Ciudad__IdPais__04E4BC85">
+          <End Type="DronPageModel.Pai" Role="Pai" Multiplicity="0..1" />
+          <End Type="DronPageModel.Ciudad" Role="Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pai">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="FormularioContacto">
           <Key>
             <PropertyRef Name="IdFormularioContacto" />
@@ -196,8 +301,9 @@
           <Property Name="CantidadDrones" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Fecha" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="IdCatServicio" Type="Int32" />
+          <Property Name="IdCiudad" Type="Int32" />
           <NavigationProperty Name="CatServicio" Relationship="DronPageModel.FK__Formulari__IdCat__74AE54BC" FromRole="FormularioContacto" ToRole="CatServicio" />
-          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="DronPageModel.FK__Formulari__IdCiu__07C12930" FromRole="FormularioContacto" ToRole="Ciudad" />
         </EntityType>
         <Association Name="FK__Formulari__IdCat__74AE54BC">
           <End Type="DronPageModel.CatServicio" Role="CatServicio" Multiplicity="0..1" />
@@ -208,6 +314,18 @@
             </Principal>
             <Dependent Role="FormularioContacto">
               <PropertyRef Name="IdCatServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Formulari__IdCiu__07C12930">
+          <End Type="DronPageModel.Ciudad" Role="Ciudad" Multiplicity="0..1" />
+          <End Type="DronPageModel.FormularioContacto" Role="FormularioContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="FormularioContacto">
+              <PropertyRef Name="IdCiudad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -288,10 +406,44 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CiudadGetByIdPais" FunctionName="DronPageModel.Store.CiudadGetByIdPais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DronPageModel.CiudadGetByIdPais_Result">
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaisGetAll" FunctionName="DronPageModel.Store.PaisGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DronPageModel.PaisGetAll_Result">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Ciudads">
+            <EntityTypeMapping TypeName="DronPageModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="DronPageModel.Pai">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FormularioContactoAdd" FunctionName="DronPageModel.Store.FormularioContactoAdd" />
           <EntitySetMapping Name="FormularioContactoes">
             <EntityTypeMapping TypeName="DronPageModel.FormularioContacto">
               <MappingFragment StoreEntitySet="FormularioContacto">
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
                 <ScalarProperty Name="IdCatServicio" ColumnName="IdCatServicio" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="CantidadDrones" ColumnName="CantidadDrones" />
@@ -302,7 +454,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="FormularioContactoAdd" FunctionName="DronPageModel.Store.FormularioContactoAdd" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
