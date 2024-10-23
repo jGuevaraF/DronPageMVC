@@ -80,6 +80,8 @@ function verificarPais(latitud, longitud) {
     ) {
         console.log("Estás en Estados Unidos.");
         $('#IdPais').val("1");
+        $('#IdPais').find('option').not('[value="1"]').remove();
+
         GetCiudadByIdPais(1)
 
     } else if (
@@ -88,6 +90,8 @@ function verificarPais(latitud, longitud) {
     ) {
         console.log("Estás en Canadá.");
         $('#IdPais').val("2");
+        $('#IdPais').find('option').not('[value="2"]').remove();
+
         GetCiudadByIdPais(2)
 
     } else if (
@@ -96,6 +100,8 @@ function verificarPais(latitud, longitud) {
     ) {
         console.log("Estás en México.");
         $('#IdPais').val("3");
+        $('#IdPais').find('option').not('[value="3"]').remove();
+
         GetCiudadByIdPais(3)
     } else {
         console.log("No estás en Canadá, Estados Unidos o México.");
@@ -107,17 +113,17 @@ function GetCiudadByIdPais(idPais) {
     //let idPais = $('#IdPais').val();
     $('#IdCiudad').empty();
 
-    if (idPais == undefined) {
-
-        idPais = $('#IdPais').val();
-
-        let etiqueta = `
+    let etiqueta = `
                         <option value=0>Selecciona una ciudad</option>
                     `
 
-        $('#IdCiudad').append(etiqueta);
+    $('#IdCiudad').append(etiqueta);
 
-        $('#IdCiudad').attr('disabled', 'disabled');
+    $('#IdCiudad').attr('disabled', 'disabled');
+
+    if (idPais == undefined) {
+
+        idPais = $('#IdPais').val();
     } 
 
     if (idPais != '0') {
@@ -129,11 +135,6 @@ function GetCiudadByIdPais(idPais) {
             success: function (result) {
 
                 if (result.Correct) {
-                    //let etiqueta = `
-                    //        <option value=0>Selecciona una ciudad</option>
-                    //    `
-
-                    //$('#IdCiudad').append(etiqueta);
 
                     $.each(result.Objects, function (index, item) {
                         etiqueta = `

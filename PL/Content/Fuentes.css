@@ -49,3 +49,7 @@
     opacity: .5;
     
 }
+
+html {
+    scroll-padding-top: 150px; /* Ajusta este valor según la altura de tu barra */
+}
