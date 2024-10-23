@@ -80,3 +80,10 @@
 hr {
     color: #1e90ff;
 }
+
+.fondoColibri {
+    background-image: url('../img/Colibri_formulario.png');
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+    /*opacity: 0.5;*/
+}

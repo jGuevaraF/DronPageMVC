@@ -36,13 +36,6 @@
 }
 
 
-.fondoColibri {
-    background-image: url('../Content/img/Colibri_formulario.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50px center;
-}
-
 .bglither {
     background-color: gray;
      border-radius:10px;
