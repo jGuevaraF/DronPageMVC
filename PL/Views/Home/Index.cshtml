@@ -43,13 +43,11 @@
             padding: 50px;
         }
 
-    .content-banner {
-        margin-top: 550px;
-    }
-
-    .sobreNosotros{
-        font-size: 20px;
-    }
+    /*@@media (max-width: 576px) {*/ /* Ajusta el valor según el tamaño de pantalla deseado */
+        /*.video-container .overlay h2,
+    .video-container .overlay p {
+        display: none;*/ /* Oculta el texto */
+        /*}*/
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -63,14 +61,17 @@
         <button type="button" data-bs-target="#inicio" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#inicio" data-bs-slide-to="2" aria-label="Slide 3"></button>
         <button type="button" data-bs-target="#inicio" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#inicio" data-bs-slide-to="6" aria-label="Slide 7"></button>
     </div>
 
     <!-- Inner -->
     <div class="carousel-inner">
         <!-- Single item -->
         <div class="carousel-item active">
-            <video class="w-100" autoplay loop muted>
-                <source src="~/Content/video/Calavera 3mb.mp4" type="video/mp4" />
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Calavera 3mb.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
@@ -84,7 +85,7 @@
 
                     <div class="d-flex justify-content-center gap-3">
                         <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="@Url.Action("Reserva","Reserva")">
-                            <h5 class="mb-0 Subtitulo">Contáctanos!!!</h5>
+                            <h5 class="mb-0 Subtitulo">Reserva!!!</h5>
                         </a>
                         <a class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" href="#nuestroTrabajo">
                             <h5 class="mb-0 Subtitulo">Nuestro Trabajo</h5>
@@ -96,35 +97,29 @@
 
         <!-- Single item -->
         <div class="carousel-item">
-            <video class="w-100" autoplay loop muted>
-                <source src="~/Content/video/Santa 3mb.mp4" type="video/mp4" />
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Aguila 3mb.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">Creatividad a nuevas alturas</h1>
-                    <p class="lead text-light Subtitulo">
-                        Con innovadores sistemas de control y diseño, llevamos el espectáculo aéreo a un nivel superior, donde cada movimiento y patrón es una obra de arte en el cielo.
-                    </p>
-
-                    @*<div class="d-flex justify-content-center gap-3">
-                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
-                                <h5 class="mb-0">Contáctanos!!!</h5>
-                            </a>
-                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="#NuestroTrabajo">
-                                <h5 class="mb-0">Nuestro Trabajo</h5>
-                            </a>
-                        </div>*@
+                    <div>
+                        <p class="lead text-light Subtitulo">
+                            Con innovadores sistemas de control y diseño, llevamos el espectáculo aéreo a un nivel superior, donde cada movimiento y patrón es una obra de arte en el cielo.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Single item -->
         <div class="carousel-item">
-            <video class="w-100" autoplay loop muted>
-                <source src="~/Content/video/Caballo 3mb.mp4" type="video/mp4" />
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Dia de muertos 5MB.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">Más allá de lo convencional</h1>
@@ -134,25 +129,18 @@
                     <p class="lead text-light Subtitulo">
                         Cada movimiento y patrón de nuestro espectáculo aéreo es una sinfonía visual que eleva el show a nuevas alturas
                     </p>
-
-                    @*<div class="d-flex justify-content-center gap-3">
-                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="@Url.Action("Reserva","Home")">
-                                <h5 class="mb-0">Contáctanos!!!</h5>
-                            </a>
-                            <a class="btn btn-outline-light rounded-pill px-4 py-2" href="Reserva.html">
-                                <h5 class="mb-0">Nuestro Trabajo</h5>
-                            </a>
-                        </div>*@
                 </div>
             </div>
+
         </div>
 
         <!-- Single item -->
         <div class="carousel-item">
-            <video class="w-100" autoplay loop muted>
-                <source src="~/Content/video/Flor 3mb.mp4" type="video/mp4" />
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Halloween 5MB.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+
             <div class="carousel-caption d-flex justify-content-center align-items-center h-100 text-center">
                 <div class="content-banner">
                     <h1 class="display-4 fw-bold text-light Titulo">El cielo, nuestro escenario</h1>
@@ -174,7 +162,37 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Navidad nuevo 5MB.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/San valentin 5MB.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+            <video class="w-100" autoplay loop muted playsinline>
+                <source src="~/Content/video/IndexBanner/Video primavera 5MB.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+        </div>
+
+
     </div>
 
     <!-- Controls -->
@@ -189,11 +207,13 @@
 </div>
 
 
-<main class="pt-5 px-5">
+
+@*SOBRE NOSOTROS*@
+<main class="pt-lg-5 pt-sm-0 px-5">
     <div class="container-fluid text-white" id="sobreNosotros">
         <div class="mt-5 text-center">
-            <h2 class="text-center mb-4 Titulo">Sobre Nosotros</h2>
-            <dxiv class="mt-4">
+            <h1 class="text-center mb-4 Titulo">Sobre Nosotros</h1>
+            <div class="mt-4">
                 <div class="row">
                     <div class="col-12 col-md-6 p-3">
                         <h3 class="text-center Titulo">K'i'ik</h3>
@@ -206,12 +226,12 @@
 
                     </div>
                     <div class="col-12 col-md-6 p-3">
-                        <img src="~/Content/img/Cards/Santa.png" class="img-fluid" />
+                        <img src="~/Content/img/Cards/Santa.png" class="img-fluid rounded-5" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 p-3">
-                        <img src="~/Content/img/Cards/Reyes magos.png" class="img-fluid" />
+                        <img src="~/Content/img/Cards/Reyes magos.png" class="img-fluid rounded-5" />
                     </div>
                     <div class="col-12 col-md-6 p-3">
                         <p class="Subtitulo text-center sobreNosotros">
@@ -226,21 +246,23 @@
                         </p>
                     </div>
                 </div>
-            </dxiv>
+            </div>
         </div>
 
+        @*CARDS*@
         <div class="mt-5 text-center" id="nuestroTrabajo">
-            <h2 class="text-center mb-4 Titulo">Nuestro trabajo</h2>
+            <h1 class="text-center mb-4 Titulo">Nuestro trabajo</h1>
             <div class="container-fluid my-5">
-                <div class="row">
+                <div class="row justify-content-center">
                     <!-- Video 1 -->
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/5.Calabaza.mp4" type="video/mp4">
+                            <video controls loop preload="metadata" loading="lazy" poster="~/Content/img/CardsMiniaturas/DIA DE MUERTOS.png">
+                                <source src="~/Content/video/IndexCards/Dia de muertos Intro 5MB.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <div class="overlay">
+                            @*<div class="overlay">*@
+                            <div class="">
                                 <h2 class="Subtitulo">Card Title</h2>
                                 <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
@@ -250,11 +272,12 @@
                     <!-- Video 2 -->
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/Corazon 3mb.mp4" type="video/mp4">
+                            <video controls loop preload="metadata" loading="lazy" poster="~/Content/img/CardsMiniaturas/HALLOWEEN.png">
+                                <source src="~/Content/video/IndexCards/Halloween Intro 5MB.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <div class="overlay">
+                            @*<div class="overlay">*@
+                            <div class="">
                                 <h2 class="Subtitulo">Card Title</h2>
                                 <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
@@ -264,11 +287,12 @@
                     <!-- Video 3 -->
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/Flor 3mb.mp4" type="video/mp4">
+                            <video controls loop preload="metadata" loading="lazy" poster="~/Content/img/CardsMiniaturas/NAVIDAD.png">
+                                <source src="~/Content/video/IndexCards/Navidad Intro 5MB.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <div class="overlay">
+                            @*<div class="overlay">*@
+                            <div class="">
                                 <h2 class="Subtitulo">Card Title</h2>
                                 <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
@@ -278,11 +302,12 @@
                     <!-- Video 4 -->
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/Rueda fortuna 3mb.mp4" type="video/mp4">
+                            <video controls loop preload="metadata" loading="lazy" poster="~/Content/img/CardsMiniaturas/PRIMAVERA.png">
+                                <source src="~/Content/video/IndexCards/Primavera intro 5MB.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <div class="overlay">
+                            @*<div class="overlay">*@
+                            <div class="">
                                 <h2 class="Subtitulo">Card Title</h2>
                                 <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
@@ -292,30 +317,19 @@
                     <!-- Video 5 -->
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/Santa 3mb.mp4" type="video/mp4">
+                            <video controls loop preload="metadata" loading="lazy" poster="~/Content/img/CardsMiniaturas/SAN VALENTIN.png">
+                                <source src="~/Content/video/IndexCards/San valentin Intro 5MB.mp4" type="video/mp4">
                                 Tu navegador no soporta el video.
                             </video>
-                            <div class="overlay">
+                            @*<div class="overlay">*@
+                            <div class="">
                                 <h2 class="Subtitulo">Card Title</h2>
                                 <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Video 6 -->
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                        <div class="video-container">
-                            <video controls loop>
-                                <source src="~/Content/video/Aguila 3mb.mp4" type="video/mp4">
-                                Tu navegador no soporta el video.
-                            </video>
-                            <div class="overlay">
-                                <h2 class="Subtitulo">Card Title</h2>
-                                <p class="Subtitulo">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -326,5 +340,5 @@
 
 
 <script type="text/javascript" src="~/Scripts/Index/Index.js"></script>
-
+<link rel="stylesheet" href="~/Content/cssEstilos/IndexMovile.css" />
 

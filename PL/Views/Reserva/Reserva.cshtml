@@ -17,16 +17,17 @@
 
 <main class="pt-5">
     <div class="container mt-5">
-        <div class="position-relative" style="height: 300px; overflow: hidden;">
+        <div class="mb-2">
             <!--<img src="img/Cards/Calabaza.png" class="img-fluid" alt="Descripción de la imagen" style="object-fit: cover; width: 100%; height: 100%;">-->
-            <video autoplay loop>
-                <source src="~/Content/video/Banner.mp4" />
+            <video autoplay loop class="w-100" playsinline>
+                <source src="~/Content/video/ReservaBanner/Reserva 5MB.mp4" />
             </video>
-            <div class="position-absolute top-50 start-50 translate-middle text-white">
-                @*<p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Contactanos</p>*@
-                <p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Reserva</p>
-            </div>
+            <!--<div class="position-absolute top-50 start-50 translate-middle text-white">-->
+            @*<p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Contactanos</p>*@
+            <!--<p class="display-4 display-sm-3 display-md-2 display-lg-1 fw-bold Titulo">Reserva</p>
+            </div>-->
         </div>
+
 
         <div class="row mt-5" id="section1">
             <!-- Información de la Empresa -->
@@ -35,13 +36,31 @@
                 <form class="pt-5 col-lg-10 offset-lg-1" id="formContacto">
                     <div class="mb-3">
                         <label for="nombre" class="form-label subtitulo2"><i class="bi bi-person"></i> Nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" class="form-control subtitulo2" id="nombre" required onkeypress="soloLetras(event)">
                     </div>
+
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <label for="ApellidoPaterno" class="form-label subtitulo2">
+                                <i class="bi bi-person"></i> Apellido Paterno
+                            </label>
+                            <input type="text" class="form-control subtitulo2" id="ApellidoPaterno" required onkeypress="soloLetras(event)">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="ApellidoMaterno" class="form-label subtitulo2">
+                                <i class="bi bi-person"></i> Apellido Materno
+                            </label>
+                            <input type="text" class="form-control subtitulo2" id="ApellidoMaterno" required onkeypress="soloLetras(event)">
+                        </div>
+                    </div>
+
+
                     <div class="mb-3 row">
                         <div class="col-6">
                             <label for="IdPais" class="form-label subtitulo2"><i class="bi bi-globe2"></i> País</label>
                             <select class="form-control custom-select subtitulo2" id="IdPais" onchange="GetCiudadByIdPais()" disabled>
-                            @*<select class="form-control custom-select subtitulo2" id="IdPais" disabled>*@
+                                @*<select class="form-control custom-select subtitulo2" id="IdPais" disabled>*@
                                 <option class="form-control" value="0">Selecciona un país</option>
                                 @foreach (ML.Pais pais in Model.Ciudad.Pais.Paises)
                                 {
@@ -52,7 +71,7 @@
 
                         <div class="col-6">
                             <label for="IdCiudad" class="form-label subtitulo2"><i class="bi bi-geo-alt"></i> Ciudad</label>
-                            <select class="form-control custom-select subtitulo2" disabled id="IdCiudad">
+                            <select class="form-control custom-select subtitulo2" id="IdCiudad" required>
                                 <option class="form-control" value="0">Selecciona una ciudad</option>
                             </select>
                         </div>
@@ -60,11 +79,11 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label subtitulo2"><i class="bi bi-envelope"></i> Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control subtitulo2" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label subtitulo2"><i class="bi bi-telephone"></i> Teléfono</label>
-                        <input type="text" class="form-control" id="telefono">
+                        <input type="text" class="form-control subtitulo2" id="telefono" required maxlength="10" minlength="10">
                     </div>
                     <div class="form-text text-white subtitulo2">
                         Si tienes alguna duda, revisa nuestra sección de <a href="@Url.Action("Preguntas","Home")" class="text-info">preguntas frecuentes</a>, no dudes en escribirnos. Estamos aquí para ayudarte.
@@ -75,11 +94,14 @@
 
             <!-- Formulario de Reserva -->
             <div class="col-lg-6 col-md-12 order-lg-2 order-2 mb-4s text-white">
-                <h1 class="text-center fw-bold mb-5 Subtitulo">Servicio</h1>
+                <h1 class="text-center fw-bold mb-5 Subtitulo fs-1">Servicio</h1>
                 <div class="col-lg-8 offset-lg-2">
+                    <span id="mensajeValidacion" style="color: red; font-size: 12px; display: none; text-align: center; font-weight: bold;"></span>
+
                     @foreach (ML.CatServicio servicio in Model.CatServicios)
                     {
-                        <div class="service-option" id="evento-corporativo">
+                        @*<div class="service-option" id="evento-corporativo">*@
+                        <div class="service-option">
                             <input type="hidden" value="@servicio.IdCatServicio" id="IdServicio" />
                             <h3 class="Subtitulo" style="font-size:20px">@servicio.Titulo</h3>
                             <p class="Subtitulo" style="font-size:12px">@servicio.Contenido</p>
@@ -89,10 +111,14 @@
 
 
                 <div class="d-flex justify-content-lg-end justify-content-center">
-                    <button id="nextToSection2" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom">Siguiente</button>
+                    <button id="nextToSection2" class="btn btn-outline-light rounded-pill px-4 py-2 borderButtom" onclick="validarFormulario()">Siguiente</button>
                 </div>
             </div>
         </div>
+
+        @*<div class="col-lg-8">
+                <div id="calendar"></div>
+            </div>*@
 
         <div class="row mt-5" id="section2" style="display: none;">
             <div class="col-lg-5 order-lg-1 col-md-12">
@@ -211,6 +237,23 @@
 
         </div>
 
+        <div id="section3" class="row mt-5 d-none">
+            <div class="text-center">
+                <h1 class="Titulo">!Gracias!</h1>
+                <p class="Subtitulo">Tu próximo paso comienza aqui</p>
+                <img src="~/Content/img/Colibri con flores.gif" class="imgConfirmarPedido" />
+                <p class="subtitulo2">Te enviaremos un correo de seguimiento con los detalles tan pronto esté disponible.</p>
+                <div class="d-flex align-items-center justify-content-center">
+                    <p class="me-3 subtitulo2">¿Necesitas cambiar algo?</p>
+                    <p class="Titulo">
+                        @*<a href="#">Volver</a> | <a href="#">Finalizar</a>*@
+                        <a href="@Url.Action("Index", "Home")">Finalizar</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
 
 
     </div>
@@ -242,14 +285,27 @@
 </main>
 
 
+<div id="loadingOverlay" class="d-none">
+    <div class="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-2">Enviando correo, por favor espera...</p>
+    </div>
+</div>
+
+
+
 
 <script>
      // Convertir el JSON desde ViewBag a un objeto JavaScript
     var fechasReservadasData = @Html.Raw(ViewBag.FechasReservadasJson);
-    console.log(fechasReservadasData)
+    //console.log(fechasReservadasData)
 
-    let url = '@Url.Action("GetCiudadByIdPais", "Reserva")'
-    console.log(url)
+    let urlGetCiudadByIdPais = '@Url.Action("GetCiudadByIdPais", "Reserva")'
+    //console.log(urlGetCiudadByIdPais)
+
+    var srcIconoReserva = '@Url.Content("~/Content/img/IconoReserva.png")';
 </script>
 
 <script type="text/javascript" src="~/Scripts/Reserva/Calendario2.js"></script>

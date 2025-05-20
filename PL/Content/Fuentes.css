@@ -22,6 +22,7 @@
 
 .Subtitulo {
     font-family: 'Dense-Italic';
+    font-size: 20px;
 }
 
 .subtitulo2 {
@@ -38,11 +39,30 @@
 
 .bglither {
     background-color: gray;
-     border-radius:10px;
+    border-radius: 10px;
     opacity: .5;
-    
 }
 
 html {
     scroll-padding-top: 150px; /* Ajusta este valor según la altura de tu barra */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(0, 150, 255, 0.5);
+    animation: brillo-sutil 3s infinite alternate;
+}
+
+@keyframes brillo-sutil {
+    0% {
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.3), 0 0 6px rgba(0, 150, 255, 0.3);
+    }
+
+    100% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(0, 150, 255, 0.5);
+    }
+}
+
+@media (max-width: 576px) {
+
+    .video-container .overlay h2,
+    .video-container .overlay p {
+        display: none;
+    }
 }

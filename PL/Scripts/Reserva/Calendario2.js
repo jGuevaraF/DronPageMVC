@@ -239,13 +239,31 @@ var today = moment();
         return classes.join(' ');
     }
 
-    
+
     Calendar.prototype.openDay = function (el, day) {
+
+        var diasSemana = $('.day');
+
+        diasSemana.each(function () {
+            var dayNumberElement = this.querySelector('.day-number');
+            var iconContainer = this.querySelector('.day-icon-container');
+
+            iconContainer.style.display = 'none';
+            dayNumberElement.style.visibility = 'visible'; // Mostrar el número del día visualmente
+
+        });
+
 
         clickedDate = el.dataset.date;
         console.log(clickedDate);
+
+        getClima(clickedDate);
         var dayNumberElement = el.querySelector('.day-number');
         var iconContainer = el.querySelector('.day-icon-container');
+
+        var dayNumberElementAll = document.querySelector('.day-number');
+        var iconContainerAll = document.querySelector('.day-icon-container');
+
 
         // Alternar entre mostrar y ocultar el ícono
         if (iconContainer.style.display === 'none' || iconContainer.style.display === '') {
@@ -254,13 +272,12 @@ var today = moment();
             iconContainer.style.marginTop = '10px';
             dayNumberElement.style.visibility = 'hidden'; // Ocultar el número del día visualmente, pero no ocupar el espacio
 
-            
-
         } else {
             // Ocultar el ícono y hacer visible el número del día
             iconContainer.style.display = 'none';
             dayNumberElement.style.visibility = 'visible'; // Mostrar el número del día visualmente
         }
+
 
         // Añadir el ícono si aún no existe
         if (!iconContainer.querySelector('.day-icon')) {
@@ -270,12 +287,17 @@ var today = moment();
         }
     };
 
+
     Calendar.prototype.addIconToDay = function (dayElement, day) {
+
         // Crear el ícono y añadirlo al contenedor
         var iconContainer = dayElement.querySelector('.day-icon-container');
+
+
         //var icon = createElement('i', 'day-icon bi bi-calendar-check-fill'); // Cambia 'bi bi-star' por el ícono que desees
         var icon = createElement('img', 'day-icon colibri');
-        icon.src = '../../Content/img/IconoReserva.png';
+        //icon.src = '../../Content/img/IconoReserva.png';
+        icon.src = srcIconoReserva;
         icon.style.width = '50px'; // Ajusta el tamaño para que coincida con el ícono
         //icon.style.height = '1em';
 

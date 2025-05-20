@@ -16,20 +16,99 @@ serviceOptions.forEach(option => {
 });
 
 $(document).ready(function () {
-    $('#nextToSection2').click(function () {
-        $('#section1').removeClass('visible').addClass('hidden');
-        $('#section2').removeClass('hidden').addClass('visible').show();
-    });
+    //$('#nextToSection2').click(function () {
+    //    // Variable para rastrear si el formulario es válido
+    //    let formIsValid = true;
 
-    $('#backToSection1').click(function () {
-        $('#section2').removeClass('visible').addClass('hidden');
-        $('#section1').removeClass('hidden').addClass('visible').show();
-    });
+    //    // Selecciona todos los inputs requeridos en section1 y verifica su validez
+    //    $('#section1 input[required]').each(function () {
+    //        if (!this.checkValidity()) {
+    //            this.reportValidity(); // Muestra el mensaje nativo de requerido en el campo
+    //            formIsValid = false;
+    //            return false; // Detiene la iteración si encuentra un campo inválido
+    //        }
+    //    });
+
+    //    // Validación del select de ciudad (campo requerido y valor distinto de '0')
+    //    let ciudadSelect = $('#IdCiudad')[0]; // Accedemos al elemento del select
+    //    let IdCiudad = $('#IdCiudad').val();
+
+    //    console.log(IdCiudad)
+    //    //if ($('#IdCiudad').val() === '0' || !ciudadSelect.checkValidity()) {
+    //    if ($('#IdCiudad').val() === '0') {
+    //        // Si el valor es '0' o no pasa la validación
+    //        ciudadSelect.setCustomValidity('Por favor, selecciona una ciudad.');
+    //        ciudadSelect.reportValidity(); // Mostrar el mensaje de error
+    //        formIsValid = false;
+    //    } else {
+    //        ciudadSelect.setCustomValidity(''); // Limpiar el mensaje de error si es válido
+    //    }
+
+    //    // Si todos los campos son válidos, procede a mostrar section2
+    //    if (formIsValid) {
+    //        $('#section1').removeClass('visible').addClass('hidden');
+    //        $('#section2').removeClass('hidden').addClass('visible').show();
+    //    }
+    //});
+
+    //$('#backToSection1').click(function () {
+    //    // Muestra section1 nuevamente y oculta section2
+    //    $('#section2').removeClass('visible').addClass('hidden');
+    //    $('#section1').removeClass('hidden').addClass('visible').show();
+    //});
+
 
     obtenerUbicacion();
 });
 
 
+function validarFormulario() {
+    let formIsValid = true;
+
+    $('#section1 input[required]').each(function () {
+        if (!this.checkValidity()) {
+            this.reportValidity();
+            formIsValid = false;
+            return false;
+        }
+    });
+
+    let ciudadSelect = $('#IdCiudad')[0];
+    let IdCiudad = $('#IdCiudad').val();
+
+
+    if (IdCiudad === '0') {
+        ciudadSelect.setCustomValidity('Por favor, selecciona una ciudad.');
+        ciudadSelect.reportValidity();
+        formIsValid = false;
+    } else {
+        ciudadSelect.setCustomValidity('');
+    }
+
+    // Validar que al menos una opción tenga la clase 'active'
+    //if ($('.service-option.active').length === 0) {
+    //    alert('Debes seleccionar al menos una opción antes de continuar.');
+    //    formIsValid = false;
+    //}
+
+    // Validar que al menos una opción tenga la clase 'active'
+    if ($('.service-option.active').length === 0) {
+        $('#mensajeValidacion').text('Debes seleccionar al menos una opción.').show();
+        formIsValid = false;
+    } else {
+        $('#mensajeValidacion').text('').hide();
+    }
+
+    if (formIsValid) {
+        $('#section1').removeClass('visible').addClass('hidden');
+        $('#section2').removeClass('hidden').addClass('visible').show();
+    }
+
+    $('#backToSection1').click(function () {
+        $('#section2').removeClass('visible').addClass('hidden');
+        $('#section1').removeClass('hidden').addClass('visible').show();
+    });
+}
 function obtenerUbicacion() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -119,16 +198,16 @@ function GetCiudadByIdPais(idPais) {
 
     $('#IdCiudad').append(etiqueta);
 
-    $('#IdCiudad').attr('disabled', 'disabled');
+    //$('#IdCiudad').attr('disabled', 'disabled');
 
     if (idPais == undefined) {
 
         idPais = $('#IdPais').val();
-    } 
+    }
 
     if (idPais != '0') {
         $.ajax({
-            url: '/Reserva/GetCiudadByIdPais',
+            url: urlGetCiudadByIdPais,
             type: 'GET',
             dataType: 'JSON',
             data: { IdPais: idPais },
@@ -141,7 +220,7 @@ function GetCiudadByIdPais(idPais) {
                         <option value= ${item.IdCiudad}> ${item.Nombre} </option>
                     `
                         $('#IdCiudad').append(etiqueta);
-                        $('#IdCiudad').removeAttr('disabled');
+                        //$('#IdCiudad').removeAttr('disabled');
                     })
                 }
 
@@ -154,3 +233,45 @@ function GetCiudadByIdPais(idPais) {
     }
 
 }
+
+
+function soloLetras(event) {
+    var input = event.target;
+    var char = String.fromCharCode(event.keyCode || event.which);
+    var nuevaCadena = input.value + char; // Texto después de la pulsación
+
+    // Contamos los espacios en la cadena
+    var cantidadEspacios = (nuevaCadena.match(/ /g) || []).length;
+
+    // Expresión regular que no permite más de un espacio seguido
+    var regex = /^[a-zA-Z ]*$/; // Solo permite letras y espacios
+    var noDosEspaciosSeguidos = !/\s{2,}/.test(nuevaCadena); // No permite dos espacios seguidos
+
+    // Verificamos que no haya más de 2 espacios, que no haya dos espacios seguidos y que la cadena sea válida
+    if (cantidadEspacios > 2 || !regex.test(nuevaCadena) || !noDosEspaciosSeguidos) {
+        event.preventDefault();
+        document.getElementById('mensajeError').style.display = 'inline'; // Mostrar mensaje
+    } else {
+        document.getElementById('mensajeError').style.display = 'none'; // Ocultar mensaje si es válido
+    }
+}
+
+//function soloLetras(event) {
+//    var input = event.target;
+//    var char = String.fromCharCode(event.keyCode || event.which);
+//    var nuevaCadena = input.value + char; // Texto después de la pulsación
+
+//    // Contamos los espacios en la cadena
+//    var cantidadEspacios = (nuevaCadena.match(/ /g) || []).length;
+
+//    // Verificamos que no haya más de 2 espacios y que solo haya letras y espacios
+//    var regex = /^[a-zA-Z ]*$/;  // Solo permite letras y espacios
+
+//    // Si la cadena tiene más de 2 espacios o no cumple con la regex, prevenir la acción
+//    if (cantidadEspacios > 2 || !regex.test(nuevaCadena)) {
+//        event.preventDefault();
+//        document.getElementById('mensajeError').style.display = 'inline'; // Mostrar mensaje
+//    } else {
+//        document.getElementById('mensajeError').style.display = 'none'; // Ocultar mensaje si es válido
+//    }
+//}

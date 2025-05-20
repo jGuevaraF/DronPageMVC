@@ -175,3 +175,64 @@ body {
         opacity: 0.5; /* Efecto de deshabilitado */
         cursor: not-allowed; /* Icono de no permitido */
     }
+
+
+    .imgConfirmarPedido{
+        width:70%;
+        /*margin: -100px;*/
+    }
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo blanco-gris translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Asegura que se superponga a todo */
+}
+
+.spinner-container {
+    text-align: center;
+}
+
+/* Spinner */
+.spinner-border {
+    width: 5rem; /* Aumenta el tamaño del spinner */
+    height: 5rem;
+    border-width: 0.4rem; /* Ajusta el grosor del borde */
+    animation: spin 1.5s linear infinite; /* Animación personalizada */
+    border-top-color: #007bff; /* Color azul del borde superior */
+    border-right-color: #6c757d; /* Color gris del borde derecho */
+    border-bottom-color: #007bff; /* Color azul del borde inferior */
+    border-left-color: #6c757d; /* Color gris del borde izquierdo */
+}
+
+.form-label {
+    white-space: nowrap;
+}
+
+
+/* Animación personalizada del spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Texto adicional para el spinner */
+.loading-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #007bff; /* Azul a juego con el spinner */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sutil sombra en el texto */
+}
+

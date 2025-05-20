@@ -1,0 +1,93 @@
+﻿@media (max-width: 768px) {
+    .carousel-item video {
+        height: 300px; /* Ajusta la altura según sea necesario */
+        object-fit: cover;
+    }
+
+    .content-banner h1 {
+        font-size: 1.5rem; /* Reduce el tamaño del título */
+    }
+
+    .content-banner p {
+        font-size: 1rem; /* Reduce el tamaño del subtítulo */
+    }
+
+    .btn {
+        font-size: 0.9rem; /* Reduce el tamaño de los botones */
+        padding: 6px 12px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .carousel-item video {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+
+    .carousel-caption {
+        bottom: 10%; /* Baja la posición del texto */
+    }
+}
+
+
+/*Responsivo*/
+@media (max-width: 768px) {
+    .carousel-caption {
+        font-size: 1rem;  /*Escala el tamaño en móviles */
+    }
+
+        .carousel-caption h1 {
+            font-size: 18px;
+        }
+
+        .carousel-caption p {
+            font-size: 12px;
+        }
+
+
+    .Titulo {
+        font-size: 20px;
+    }
+
+    .content-banner {
+        margin-top: 20%;
+    }
+
+    .carousel video {
+        margin-top: 30px;
+    }
+
+/*
+    .lead.text-light.Subtitulo {
+        display: none;
+    }
+*/
+    .btn.btn-outline-light.rounded-pill.px-4.py-2.borderButtom {
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 15px;
+        padding: 5px 13px !important;
+    }
+
+    .logo {
+        width: 70%;
+    }
+
+    .mb-0.Subtitulo {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 600px) {  /*Ajusta el valor según el tamaño de pantalla deseado */
+    .Subtitulo {
+        font-size: 15px;
+    }
+}
+

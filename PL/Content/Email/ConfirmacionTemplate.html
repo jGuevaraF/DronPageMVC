@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>Show de Drones</title>
+    <!--<link rel="stylesheet" href="../cssEstilos/Email/ConfirmacionTemplate.css">-->
+    <!--<link rel="stylesheet" href="../Fuentes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,400i,700,700i|Barlow+Condensed:400,400i,700,700i" rel="stylesheet" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       /* body {
+            background-color: black;
+            color: #FFFFFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }*/
+
+        body {
+            color: #FFFFFF;
+        }
+
+        .subtitulo2 {
+            font-family: "Quicksand", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+       
+
+        /* Container */
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            background-color: #000000;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            float: left;
+            width: 60%;
+        }
+
+            .logo img {
+                width: 50px;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+
+            .logo h1 {
+                display: inline-block;
+                font-size: 1.5em;
+                color: #FFFFFF;
+                vertical-align: middle;
+            }
+
+        .explore-link {
+            float: right;
+            /*width: 35%;*/
+            color: #FFFFFF;
+            font-size: 0.9em;
+            text-decoration: none;
+            text-align: right;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        /* Clearfix for floats */
+        header::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        /* Main Content */
+        .content {
+            margin-top: 20px;
+        }
+
+        .left {
+            float: left;
+            width: 60%;
+        }
+
+        .right {
+            float: right;
+            width: 35%;
+            text-align: center;
+        }
+
+            .right img {
+                width: 80%;
+            }
+
+        .greeting {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .txtBlue {
+            color: #00A9E0;
+        }
+
+        .confirmation {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            margin-top: 20px;
+            width: 100%;
+            display: table;
+        }
+
+        .detail-item {
+            width: 30%;
+            text-align: center;
+            display: table-cell;
+            vertical-align: top;
+        }
+
+            .detail-item img {
+                width: 30%;
+            }
+
+        .subtext {
+            font-size: 0.8em;
+            color: #CCCCCC;
+        }
+
+        /* Footer */
+        footer.contact {
+            background-image: url('../../img/Email/Textura puntos.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 40px 10px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+            footer.contact .social,
+            footer.contact .social-icons,
+            footer.contact .social p {
+                font-size: 1em;
+                color: #fff;
+                background: transparent;
+            }
+
+            footer.contact:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0);
+                z-index: 0;
+            }
+
+        /* Clearfix for footer and content */
+        .content::after,
+        footer::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .logo,
+            .explore-link {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+
+                .logo img {
+                    margin: 0 auto;
+                    display: block;
+                }
+
+            .left,
+            .right {
+                float: none;
+                width: 100%;
+            }
+
+                .right img {
+                    width: 100%;
+                }
+
+            .details {
+                display: block;
+            }
+
+            .detail-item {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="cid:colibri" alt="Logo Show de Drones">
+                <h1 class="Subtitulo">SHOW DE DRONES</h1>
+            </div>
+            <a href="{LINK}" class="explore-link subtitulo2">Sigue explorando</a>
+        </header>
+
+        <section class="content">
+            <div class="left">
+                <h2>Calidad y profesionalismo en cada detalle</h2>
+                <p class="greeting">¡Hola! <span class="txtBlue">{Usuario}</span></p>
+                <p class="confirmation">Tu pedido ha sido confirmado</p>
+                <h2 class="txtBlue Subtitulo">Detalles</h2>
+
+            </div>
+
+            <div class="right">
+                <img alt="colibri" src="cid:colibri_reserva" />
+            </div>
+
+            <div class="center">
+                <div class="details">
+                    <div class="detail-item">
+                        <h3 class="Subtitulo subtitulo2">Servicio</h3>
+                        <p>{TipoServicio}</p>
+                        <p class="subtext">{DescripcionServicio}</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3 class="Subtitulo subtitulo2">Cantidad de drones</h3>
+                        <img src="cid:iconoDron" alt="Icono de Dron" />
+                        <p>{CantidadDrones}</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3 class="Subtitulo subtitulo2">Fecha aproximada</h3>
+                        <i class="fas fa-calendar-alt" style="color:white;"></i>
+                        <p>{Fecha}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <p><strong class="Subtitulo">Contacto:</strong> <span>Correo</span> <span>Dirección</span></p>
+
+            </div>
+
+
+        </section>
+
+        <footer class="contact">
+            <!--<img src="../img/Email/Textura puntos.png" alt="Textura puntos" />-->
+            <div class="social">
+                <p><strong class="txtBlue"> ¡No te pierdas nada!</strong> Síguenos en nuestras redes sociales para estar al tanto de todas nuestras novedades</p>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+
+        </footer>
+    </div>
+</body>
+</html>

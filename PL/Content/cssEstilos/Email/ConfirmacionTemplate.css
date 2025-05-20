@@ -1,0 +1,184 @@
+﻿/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+/* Container and Layout */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+    .logo img {
+        width: 50px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.5em;
+        color: #FFFFFF;
+    }
+
+.explore-link {
+    color: #FFFFFF;
+    font-size: 0.9em;
+    text-decoration: none;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+/* Main Content */
+
+/* Ajusta el contenedor principal del contenido */
+.content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se distribuyan en varias filas */
+    justify-content: space-between; /* Distribuye espacio entre los elementos */
+}
+
+/* Haz que la sección "center" abarque todo el ancho */
+.center {
+    width: 100%; /* Abarca todo el ancho del contenedor */
+    margin-top: 20px; /* Añade un margen superior para separarlo de los otros bloques */
+    text-align: center; /* Centra el contenido de manera opcional */
+}
+
+
+.left {
+    width: 60%;
+}
+
+.greeting {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.txtBlue {
+    color: #00A9E0;
+}
+
+.confirmation {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.detail-item {
+    text-align: center;
+    width: 30%;
+}
+
+    .detail-item img {
+        width: 30%;
+    }
+
+
+.subtext {
+    font-size: 0.8em;
+    color: #CCCCCC;
+}
+
+.detail-item img, .detail-item i {
+    font-size: 1.5em;
+    color: #00A9E0;
+    margin: 10px 0;
+}
+
+/* Right Section */
+.right img {
+    width: 250px;
+}
+
+/* Footer Section */
+
+/*footer.contact {
+    background-image: url('../../img/Email/Textura puntos.png');
+    background-repeat: no-repeat;
+    background-size: cover;*/ /* Para que cubra todo el área del footer */
+    /*background-position: right;*/ /* Muestra más la parte derecha de la imagen */
+    /*background-position: center;*/ /* Muestra más la parte derecha de la imagen */
+    /*padding: 20px;*/ /* Ajusta el espacio dentro del footer si es necesario */
+    /*color: #fff;*/ /* Asegúrate de que el texto sea visible */
+    /*text-align: center;
+}
+
+
+.contact {
+    margin-top: 30px;
+    text-align: center;
+}
+
+    .contact p {
+        font-size: 0.9em;
+        margin: 5px 0;
+    }
+
+  
+
+.social {
+    font-size: 0.8em;
+    color: #CCCCCC;
+    margin-top: 15px;
+}
+
+.social-icons i {
+    font-size: 1.2em;
+    color: #FFFFFF;
+    margin: 0 10px;
+}*/
+
+footer.contact {
+    background-image: url('../../img/Email/Textura puntos.png');
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que el fondo ocupe todo el área */
+    background-position: center; /* Centra la imagen */
+    padding: 40px 10px; /* Espacio suficiente para el contenido */
+    color: #fff; /* Texto blanco para contraste */
+    text-align: center;
+    position: relative; /* Permite posicionar el contenido sobre el fondo */
+}
+
+    /* Texto de "¡No te pierdas nada!" */
+    footer.contact .social, footer.contact .social-icons, footer.contact .social p {
+        font-size: 1em; /* Ajusta el tamaño del texto */
+        color: #fff; /* Asegúrate de que el texto sea visible */
+        z-index: 1; /* Mantén el texto por encima de la imagen */
+        background: transparent; /* Elimina cualquier fondo negro */
+    }
+
+    /* Opcional: Capa semi-transparente para mejorar legibilidad */
+    footer.contact:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0); /* Establece transparencia completa */
+        z-index: 0; /* Mantén la capa detrás del texto */
+    }
+
